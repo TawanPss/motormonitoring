@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import './LoginAndReg.css';
 
 
@@ -31,7 +32,8 @@ export default function Register() {
             <div className="bottomForm">
                 <button type='submit'>Sign up</button>
                 <div className='links'>
-                    <p>I already have an account.Sign in</p>
+                    <p>I already have an account.</p>
+                    <Link to={'/'}>Sign In</Link>
                 </div>
             </div>
             </form>
