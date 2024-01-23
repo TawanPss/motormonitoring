@@ -1,3 +1,8 @@
+import NavigationBar from "./NavigationBar";
+
 export default function Record(){
-    return(<>Record</>)
+    return(<>
+    Record
+    <NavigationBar />
+    </>)
 }

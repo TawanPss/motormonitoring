@@ -20,7 +20,7 @@ export default function NavigationBar(){
             <li>
             <Link to="/record">RECORD</Link>  
             </li>
-            <li><Link to="/record" className="GosignOut" ><GoSignOut /></Link>  </li>
+            <li><Link to="/" className="GosignOut" ><GoSignOut /></Link>  </li>
             
         </ul>
     </nav>

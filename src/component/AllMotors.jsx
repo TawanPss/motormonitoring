@@ -1,3 +1,8 @@
+import NavigationBar from "./NavigationBar";
+
 export default function AllMotors(){
-    return(<>AllMotors</>)
+    return(<>
+    AllMotors
+    <NavigationBar />
+    </>)
 }
