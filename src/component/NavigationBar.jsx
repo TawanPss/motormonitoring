@@ -1,3 +1,4 @@
+import { GoSignOut } from "react-icons/go";
 import { Link } from "react-router-dom"
 export default function NavigationBar(){
     return(<>
@@ -18,6 +19,7 @@ export default function NavigationBar(){
             <li>
             <Link to="/record">RECORD</Link>  
             </li>
+            <Link to="/record"><GoSignOut /></Link>  
             
         </ul>
     </nav>
