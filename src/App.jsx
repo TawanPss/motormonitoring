@@ -1,11 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import Login from './LoginAndReg/Login'
 import Register from './LoginAndReg/Reg'
 
-function App() {
+export default function App() {
   return(
     <>
       <Login/>
@@ -13,4 +9,4 @@ function App() {
   );
 }
 
-export default App
+
