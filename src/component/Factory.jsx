@@ -1,8 +1,9 @@
 import NavigationBar from "./NavigationBar";
 
 export default function Factory(){
-    return(<>
+    return(
+    <>
     Factory
-    
+    <NavigationBar />
     </>)
 }
