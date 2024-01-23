@@ -10,8 +10,10 @@ import AllMotors from "./component/AllMotors.jsx";
 import Factory from "./component/Factory.jsx";
 import Mutiview from "./component/Mutiview.jsx";
 import Record from "./component/Record.jsx";
+import FavMotors from "./component/FavMotors.jsx";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
     element: <App />,
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/record",
     element: <Record />,
+  },
+  {
+    path: "/favorite",
+    element: <FavMotors />,
   },
 ]);
 
