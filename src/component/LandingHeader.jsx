@@ -8,13 +8,13 @@ export default function LandingHeader() {
                 <Link to="/"><h1>Motor monitoring</h1></Link>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/home">Home</Link>
                     </li>
                     <li>
-                        <Link to="/">About Us</Link>
+                        <Link to="/about-us">About Us</Link>
                     </li>
                     <li>
-                        <Link to="/">Contact Us</Link>
+                        <Link to="/contact-us">Contact</Link>
                     </li>
                 </ul>
             </nav>

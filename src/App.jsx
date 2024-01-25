@@ -10,6 +10,8 @@ import Record from "./component/Record.jsx";
 import FavMotors from "./component/FavMotors.jsx";
 import Home from "./component/Home";
 import Landing from "./component/Landing.jsx";
+import AboutUs from "./component/AboutUs.jsx";
+import Contact from "./component/Contact.jsx";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Routes>
         <Route path="/" element={<Login/>}></Route>
         <Route path="/landing" element={<Landing />}></Route>
+        <Route path="/about-us" element={<AboutUs />}></Route>
+        <Route path="/contact-us" element={<Contact />}></Route>
         </Routes>
         <Routes>
           <Route path="/all-motors" element={<AllMotors />}></Route>

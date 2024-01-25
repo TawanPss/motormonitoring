@@ -15,7 +15,7 @@
   .landing-header ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 20px;
     display: flex; /* Use flexbox for horizontal alignment */
     justify-content: center; /* Center the list items horizontally */
   }
