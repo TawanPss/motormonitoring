@@ -9,9 +9,7 @@
 }
 
 :root {
-    --primaryColor: #000;
-    --accentColor: #51C28E;
-    --darkColor: #0A1F38;
+    background: linear-gradient(to top left, #003d44, #000000);
 }
 
 body {

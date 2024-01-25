@@ -9,13 +9,15 @@ import Mutiview from "./component/Mutiview.jsx";
 import Record from "./component/Record.jsx";
 import FavMotors from "./component/FavMotors.jsx";
 import Home from "./component/Home";
+import Landing from "./component/Landing.jsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AllMotors />}></Route>
+        <Route path="/" element={<Login/>}></Route>
+        <Route path="/landing" element={<Landing />}></Route>
         </Routes>
         <Routes>
           <Route path="/all-motors" element={<AllMotors />}></Route>
@@ -25,7 +27,7 @@ function App() {
           <Route path="/record" element={<Record />}></Route>
           <Route path="/favorite" element={<FavMotors />}></Route>
         </Routes>
-        <NavigationBar />
+        
       </BrowserRouter>
     </>
   );
