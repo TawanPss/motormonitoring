@@ -1,4 +1,4 @@
-import LandingHeader from "./LandingHeader";
+import LandingHeader from "../../component/NavigationBar/LandingHeader";
 
 export default function Landing() {
     return (

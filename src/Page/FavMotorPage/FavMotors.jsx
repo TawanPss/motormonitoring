@@ -1,4 +1,4 @@
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "../../component/NavigationBar/NavigationBar";
 
 export default function FavMotors(){
     return(<>

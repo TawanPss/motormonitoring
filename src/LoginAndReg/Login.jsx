@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './LoginAndReg.css';
-import { Link } from 'react-router-dom';
+import { Link  , useNavigate} from 'react-router-dom';
+
 
 export default function Login() {
+    const navigate =useNavigate()
+    
+
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [data, setData] = useState([]);
@@ -10,7 +14,9 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         //////////////// Run Login Api Here ///////////////
+        
         alert(email + password)
+        navigate("/home")
         console.log(data.message)
     }
 
