@@ -1,6 +1,7 @@
 /* LandingHeader.css */
 
 .landing-header {
+  background-color:black;
   padding: 10px; /* Adjust the padding as needed */
   display: flex;
   justify-content: space-between;

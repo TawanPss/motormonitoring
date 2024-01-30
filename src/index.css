@@ -8,9 +8,7 @@
     color: #fff;
 }
 
-:root {
-    background: linear-gradient(to top left, #003d44, #000000);
-}
+
 
 body {
     height: 100vh;

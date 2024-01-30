@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
-import './LandingHeader.css'; // Assuming this is the filename for your CSS file
+import './LandingHeader.css'; 
 
 export default function LandingHeader() {
     return (
