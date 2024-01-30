@@ -1,0 +1,38 @@
+/* LandingHeader.css */
+
+.landing-header {
+    background-color: #3498db;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .landing-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  .landing-header ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px;
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: center; /* Center the list items horizontally */
+  }
+  
+  .landing-header li {
+    display: block; /* Display list items as block elements */
+    margin-bottom: 5px; /* Adjust the spacing between list items */
+  }
+  
+  .landing-header a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .landing-header a:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: #ccc; /* Change link color on hover if desired */
+  }
+  
