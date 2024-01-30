@@ -1,38 +1,45 @@
 /* LandingHeader.css */
 
 .landing-header {
-    background-color: #3498db;
-    padding: 10px;
-    text-align: center;
+  padding: 10px; /* Adjust the padding as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing-header img {
+  width: 100px; /* Adjust the logo width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.landing-header ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.landing-header li {
+  margin: 0;
+}
+
+.landing-header a {
+  text-decoration: none;
+  color: #fff; /* Set your desired text color */
+}
+
+/* Media query for screens 600px or smaller */
+@media (max-width: 600px) {
+  .landing-header {
+      flex-direction: column;
+      align-items: flex-start;
   }
-  
-  .landing-header h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #fff;
-  }
-  
+
   .landing-header ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px;
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center the list items horizontally */
+      margin-top: 10px; /* Adjust the spacing between the logo and the links */
   }
-  
+
   .landing-header li {
-    display: block; /* Display list items as block elements */
-    margin-bottom: 5px; /* Adjust the spacing between list items */
+      margin-bottom: 10px; /* Adjust the spacing between the navigation items */
   }
-  
-  .landing-header a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .landing-header a:hover {
-    text-decoration: none; /* Remove underline on hover */
-    color: #ccc; /* Change link color on hover if desired */
-  }
-  
+}
+
