@@ -1,17 +1,21 @@
 import { useState } from "react";
 import './LoginAndReg.css';
-
+import { Link } from "react-router-dom";
+import { handleRegister } from "../components/Api";
 
 
 export default function Register() {
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [username, setUsername] = useState("");
-
     const handleSubmit = (e) => {
         e.preventDefault();
         //////////////// Run Login Api Here ///////////////
         alert(email + password)
+    }
+
+    const clickRegister = () => {
+        handleRegister(username, email, password);
     }
 
     return(
@@ -29,9 +33,10 @@ export default function Register() {
                 <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
             </div>
             <div className="bottomForm">
-                <button type='submit'>Sign up</button>
+                <button onClick={clickRegister}>Sign up</button>
                 <div className='links'>
-                    <p>I already have an account.Sign in</p>
+                    <p>I already have an account.</p>
+                    <Link to={"/login"}>Sign in</Link>
                 </div>
             </div>
             </form>
