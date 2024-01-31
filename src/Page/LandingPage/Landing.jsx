@@ -8,7 +8,6 @@ export default function Landing() {
         <LandingHeader />
         <SignupForm />
         <div className="custom-shape" />
-        <p>hello</p>
       </div>
       </>
     );

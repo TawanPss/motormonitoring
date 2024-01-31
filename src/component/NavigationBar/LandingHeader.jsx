@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import './LandingHeader.css'; 
+import logo from "./logoV1.png";
 
 export default function LandingHeader() {
     return (
         <>
             <nav className="landing-header">
-                <Link to="/"><img src="./logoV1.png" /></Link>
+                <Link to="/"><img src={logo} /></Link>
                 <ul>
                     
                     <li>

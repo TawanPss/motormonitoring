@@ -1,0 +1,25 @@
+.para-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.para1, .para2 {
+    display: flex; 
+    align-items: center; 
+    margin: 4vw ; 
+    gap: 20px; 
+    text-align: right;
+}
+
+
+@media (max-width: 600px) {
+    .para-container {
+        max-width: 90%; 
+    }
+
+    .para1, .para2 {
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+}
