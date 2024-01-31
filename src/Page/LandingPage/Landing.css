@@ -1,4 +1,6 @@
-.Landing-page {
+.Landing-container {
     min-height: 100vh; 
     background: linear-gradient(to bottom,#000000 50%, #003d44);
+    color: white;
 }
+

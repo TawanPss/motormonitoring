@@ -1,10 +1,13 @@
 .label-signup {
-
+    font-size: 15vh;
+    font-weight: bold;
+    
 }
 
 .signup-input {
     background: transparent;
     border: 1px solid white;
+    
 }
 
 .signup-button {
