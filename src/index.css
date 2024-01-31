@@ -13,12 +13,6 @@
 body {
     height: 100vh;
     overflow: hidden;
-    background: var(--primaryColor);
-    background: linear-gradient(
-        0deg,
-        var(--accentColor) 0%,
-        var(--darkColor) 70%
-    );
 }
 
 h2 {

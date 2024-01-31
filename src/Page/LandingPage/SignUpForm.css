@@ -1,0 +1,17 @@
+.label-signup {
+
+}
+
+.signup-input {
+    background: transparent;
+    border: 1px solid white;
+}
+
+.signup-button {
+
+}
+
+.singup-container {
+    display: flex;
+    gap: 10px;
+}
