@@ -18,22 +18,22 @@ export default function Register() {
     return(
         <>
         <div className="container">
-            <h2>Sign up</h2>
+            <h2 className="component-header">Sign up</h2>
             <form onSubmit={(e) => handleSubmit(e)}>
             <div className="inputContainner">
-                <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} type="text" />
+                <input className="input-form" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} type="text" />
             </div>
             <div className="inputContainner">
-                <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
+                <input className="input-form" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
             </div>
             <div className="inputContainner">
-                <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
+                <input className="input-form" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
             </div>
             <div className="bottomForm">
-                <button type='submit'>Sign up</button>
+                <button className="submit-button" type='submit'>Sign up</button>
                 <div className='links'>
                     <p>I already have an account.</p>
-                    <Link to={'/'}>Sign In</Link>
+                    <Link to={'/sign-in'}>Sign In</Link>
                 </div>
             </div>
             </form>
