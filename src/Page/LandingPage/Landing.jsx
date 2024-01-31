@@ -6,8 +6,9 @@ export default function Landing() {
       <>
       <div className="Landing-container">
         <LandingHeader />
-        Landing
         <SignupForm />
+        <div className="custom-shape" />
+        <p>hello</p>
       </div>
       </>
     );

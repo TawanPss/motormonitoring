@@ -1,20 +1,53 @@
 .label-signup {
     font-size: 15vh;
     font-weight: bold;
-    
+    margin-left: 5vw;
+    margin-top: 25vh;
 }
 
 .signup-input {
     background: transparent;
-    border: 1px solid white;
-    
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 15px 10vw;
+    margin-left: 5vw;
+    color: white;
+    text-align:left;
 }
 
 .signup-button {
-
+    margin-left: 5vw;
+    background: #5dc8be;
+    border: 2px solid ;
+    border-radius: 30px;
+    padding: 15px 2vw;
 }
 
 .singup-container {
     display: flex;
     gap: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .label-signup {
+        font-size: 10vh; 
+        margin-left: 2vw; 
+        margin-top: 10vh;
+    }
+
+    .signup-input {
+        padding: 10px 5vw; 
+        margin-left: 2vw; 
+    }
+
+    .signup-button {
+        padding: 10px 2vw; 
+        margin-left: 2vw; 
+    }
+
+    .signup-container {
+        flex-direction: column; 
+        gap: 5px;
+    }
 }
