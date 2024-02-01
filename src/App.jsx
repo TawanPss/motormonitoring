@@ -11,6 +11,7 @@ import Mutiview from "./Page/MutiviewPage/Mutiview.jsx";
 import Record from "./Page/RecordPage/Record.jsx";
 import FavMotors from "./Page/FavMotorPage/FavMotors.jsx";
 import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
+import Feature from "./Page/Feature/Feature.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/multi-view" element={<Mutiview />}></Route>
           <Route path="/record" element={<Record />}></Route>
           <Route path="/favorite" element={<FavMotors />}></Route>
+          <Route path="/feature" element={<Feature />}></Route>
         </Routes>
       </BrowserRouter>
     </>

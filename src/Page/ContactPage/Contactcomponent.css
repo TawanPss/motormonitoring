@@ -1,0 +1,16 @@
+.facebook-icon,
+.gmail-icon,
+.youtube-icon,
+.ig-icon {
+  font-size: 7vh;
+  color: #a6e1db;
+  margin-right: 5px;
+  gap: 50px;
+}
+
+
+.icon-container {
+    display: flex;
+    justify-content:flex-end;
+    
+  }
