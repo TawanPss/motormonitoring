@@ -14,6 +14,27 @@ export default function Register() {
         alert(email + password)
     }
 
+    const handleRegister = () => {
+        const user = { username: username, email: email, passwd: password }; // User data to be sent to the server
+        
+        fetch(`/api/user`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('User registered successfully:', data);
+            // Handle success or navigate to another page
+          })
+          .catch((error) => {
+            console.error('Error registering user:', error);
+            // Handle error or display an error message to the user
+          });
+      };
+
     return(
         <>
         <div className="container">
@@ -29,7 +50,7 @@ export default function Register() {
                 <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
             </div>
             <div className="bottomForm">
-                <button type='submit'>Sign up</button>
+                <button onClick={handleRegister}>Register</button>
                 <div className='links'>
                     <p>I already have an account.Sign in</p>
                 </div>
