@@ -6,12 +6,14 @@ import { handleLogin } from "../components/Api";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
-    
+    const [errorMessage, setErrMessage] = useState("");
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         //////////////// Run Login Api Here ///////////////
-        alert(email + password)
+        // alert(email + password)
     }
 
     const clickLogin = async() => {
@@ -35,8 +37,9 @@ export default function Login() {
     return(
         <>
         <div className="container">
+            <h1>{message.message}</h1>
             <h2>Sign in</h2>
-            {/* <form onSubmit={(e) => handleSubmit(e)}> */}
+            <form onSubmit={(e) => handleSubmit(e)}>
             <div className="inputContainner">
                 <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
             </div>
@@ -44,17 +47,16 @@ export default function Login() {
                 <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
             </div>
             <div className="bottomForm">
-                <button type='submit'>Login</button>
+                <button onClick={clickLogin}>Login</button>
                 <div className='links'>
                     <p>Forgot Password</p>
                     <p>I don't have an account? </p>
                     <Link to={"/register"}>Signup</Link>
                 </div>
             </div>
-            {/* </form> */}
+            </form>
         </div>
         
         </>
     )
 }
-
