@@ -1,0 +1,44 @@
+.Feature-container {
+    background-color: #a6e1db;
+}
+
+
+  .feature-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Feature-pic {
+    width: 100%;
+    max-width: 400px; /* Adjust the max-width as needed */
+    height: auto;
+    margin-bottom: 10vh;
+  }
+  
+
+  
+.Feature-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    grid-row-gap: 5vh;
+   
+}
+.Health-monitoring,
+.Output-tracking,
+.Downtime,
+.Protection-data,
+.Multiview,
+.Sensor {
+  text-align: center;
+  border: 2px ;
+  border-radius: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: white;
+  box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+  
+  
+  padding: 5vh;
+}
