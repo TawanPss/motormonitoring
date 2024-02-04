@@ -11,7 +11,7 @@ export default function Featurecomponent() {
     <>
       <div className="Feature-container">
         <div className="feature-header">
-          <div className="anf-motor">ANF Motor Monitoring System Feature</div>
+          <div className="anf-motor"><h1>ANF Motor Monitoring System Feature</h1></div>
           <img className="Feature-pic" src={Feature_pic} />
         </div>
 
