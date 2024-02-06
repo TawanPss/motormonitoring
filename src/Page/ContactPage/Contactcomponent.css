@@ -12,5 +12,40 @@
 .icon-container {
     display: flex;
     justify-content:flex-end;
-    
+    border-bottom: 1px solid black;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    gap: 3%;
   }
+
+  .info-container {
+    margin-left: 10%;
+    margin-top: 3%;
+    gap: 5%;
+  }
+
+.info-location {
+  white-space: initial;
+  margin-bottom: 2%;
+}  
+
+.info-email,
+.info-num1,
+info-num2{
+  margin-bottom: 2%;
+}
+
+.info-email-container,
+.info-num-container1 ,
+.info-num-container2{
+  display: flex;
+  gap: 2%;
+  margin-bottom: 2%;
+}
+
+.info-phone-icon,
+.info-email-icon {
+  position: relative; /* or position: absolute; */
+    top: -2vh;
+}

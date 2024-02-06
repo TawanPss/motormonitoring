@@ -28,6 +28,14 @@
   color: #fff; /* Set your desired text color */
 }
 
+.signin {
+  border: 1px solid;
+  border-radius: 30px;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #a6e1db;
+}
+
 /* Media query for screens 600px or smaller */
 @media (max-width: 600px) {
   .landing-header {

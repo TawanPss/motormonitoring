@@ -5,7 +5,7 @@ export default function Contact() {
     return (
       <>
       <LandingHeader />
-        Contact
+      
       <Contactcomponent />
       </>
     );
