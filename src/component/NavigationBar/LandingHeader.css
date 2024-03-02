@@ -1,16 +1,15 @@
-/* LandingHeader.css */
 
 .landing-header {
   background-color:black;
-  padding: 10px; /* Adjust the padding as needed */
+  padding: 10px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .landing-header img {
-  width: 100px; /* Adjust the logo width as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px; 
+  height: auto; 
 }
 
 .landing-header ul {
@@ -25,7 +24,7 @@
 
 .landing-header a {
   text-decoration: none;
-  color: #fff; /* Set your desired text color */
+  color: #fff; 
 }
 
 .signin {
@@ -36,7 +35,7 @@
   background-color: #a6e1db;
 }
 
-/* Media query for screens 600px or smaller */
+
 @media (max-width: 600px) {
   .landing-header {
       flex-direction: column;
@@ -44,11 +43,11 @@
   }
 
   .landing-header ul {
-      margin-top: 10px; /* Adjust the spacing between the logo and the links */
+      margin-top: 10px; 
   }
 
   .landing-header li {
-      margin-bottom: 10px; /* Adjust the spacing between the navigation items */
+      margin-bottom: 10px; 
   }
 }
 
