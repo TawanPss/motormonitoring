@@ -1,6 +1,9 @@
+import NavigationBar from "../../component/NavigationBar/NavigationBar"
+
 export default function Record(){
     return(<>
-    Record
     <NavigationBar />
+
+    <h1>Record</h1>
     </>)
 }

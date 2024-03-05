@@ -12,6 +12,7 @@ import Record from "./Page/RecordPage/Record.jsx";
 import FavMotors from "./Page/FavMotorPage/FavMotors.jsx";
 import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
 import Feature from "./Page/Feature/Feature.jsx";
+import NewMotor from "./Page/NewMotorPage/NewMotorPage.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/record" element={<Record />}></Route>
           <Route path="/favorite" element={<FavMotors />}></Route>
           <Route path="/feature" element={<Feature />}></Route>
+          <Route path="/new-motor" element={<NewMotor/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
