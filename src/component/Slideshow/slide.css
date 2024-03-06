@@ -1,0 +1,39 @@
+.my-carousel {
+    border : 1px solid transparent;
+    border-radius: 20%;
+    margin: 5vw;
+}
+
+.my-carousel div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50vh; 
+}
+
+.carousel-label {
+    position: absolute;
+    color: white; 
+    font-size: 4em;
+    text-align: center;
+    z-index: 2;
+}
+
+.my-carousel img {
+    object-fit: cover;
+    border-radius: 20px;
+    height: 50vh;
+}
+
+.carousel-button {
+    position: absolute;
+    bottom: 15%;
+    color: white; 
+    background-color: #5dc8be; 
+    border : 1px solid transparent;
+    border-radius: 10px;
+    width: 10vw;
+    height: 3vw;
+    z-index: 2;
+}
