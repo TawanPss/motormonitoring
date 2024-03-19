@@ -15,6 +15,7 @@ import Feature from "./Page/Feature/Feature.jsx";
 import Myaccount from "./Page/MyaccountPage/Myaccount.jsx";
 import NewMotor from "./Page/NewMotorPage/NewMotorPage.jsx";
 import MotorPage from "./Page/MotorPage/Motorpage.jsx";
+import CreateMotor from "./Page/CRUD/Create.jsx";
 function App() {
   return (
     <>
@@ -34,7 +35,7 @@ function App() {
           <Route path="/feature" element={<Feature />}></Route>
           <Route path="/profile" element={<Myaccount />}></Route>
           <Route path="/new-motor" element={<NewMotor/>}></Route>
-          <Route path="/motor-pages/:slug" element={<MotorPage />}></Route>
+          <Route path="/motor-" element={<CreateMotor/>}></Route>
           </Routes>
       </BrowserRouter>
     </>
