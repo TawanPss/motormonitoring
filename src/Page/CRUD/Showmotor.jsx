@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ShowMotor = () => {
-  const { motorId } = useParams();
-  const motorApi = `http://localhost:3000/motors`;
+  const allMotorsApi = "http://localhost:3000/motors";
 
-  const [motor, setMotor] = useState(null);
+  const [motors, setMotors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMotor();
-  }, [motorId]);
+    getMotors();
+  }, []);
 
-  const getMotor = () => {
+  const getMotors = () => {
     setIsLoading(true);
     axios
-      .get(motorApi)
+      .get(allMotorsApi)
       .then((res) => {
-        const motorData = res.data.find(motor => motor.motor_id === motorId);
-        console.log(motorData);
-        setMotor(motorData);
+        setMotors(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
