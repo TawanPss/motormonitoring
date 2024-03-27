@@ -169,6 +169,11 @@
       "id": "8c6b",
       "motor_id": "12121",
       "sensors": []
+    },
+    {
+      "id": "7192",
+      "motor_id": "NodeMCU_ESP8266",
+      "sensors": []
     }
   ]
 }

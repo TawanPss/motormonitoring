@@ -22,9 +22,10 @@ const CreateMotor = () => {
             const checkResponse = await axios.get(`${createMotorApi}`);
             if (checkResponse.data) {
                 const existingMotor = checkResponse.data.find(m => m.motor_id === motor.motor_id);
+                console.log(motor.motor_id)
                 if (existingMotor) {
                     // If it does, navigate to '/show-motor'
-                    navigate('/show-motor');
+                    navigate('/show-motor/',{ state: { motorId: motor.motor_id } });
                 } else {
                     // If it doesn't, alert the user
                     alert('No motor with the given motor_id exists in the database');
