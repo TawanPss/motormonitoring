@@ -39,7 +39,7 @@ function App() {
           <Route path="/new-motor" element={<NewMotor />}></Route>
           <Route path="/motor-" element={<CreateMotor />}></Route>
           <Route path="/show-motor" element={<ShowMotor />}></Route>
-          <Route path="/motor/:motor_id" element={<ShowSingle />}></Route>
+          <Route path="/show-motor/:id" element={<ShowSingle />} />
         </Routes>
       </BrowserRouter>
     </>

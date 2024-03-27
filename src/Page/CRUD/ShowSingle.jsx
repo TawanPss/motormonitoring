@@ -2,36 +2,33 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
-const ShowSingle = () => {
-  const [motor, setMotor] = useState(null);
-  const { motor_id } = useParams();
+const EditUser = () => {
+  const [motorData, setMotorData] = useState([]);
+  const { id } = useParams();
+  const getMotorApi = "http://localhost:3000/motors"; // replace with your actual API
 
   useEffect(() => {
-    getMotor();
+    getMotorData();
   }, []);
 
-  const getMotor = () => {
+  const getMotorData = () => {
     axios
-      .get('http://localhost:3000/motors')
-      .then((res) => {
-        const motor = res.data.find(m => m.motor_id === motor_id);
-        setMotor(motor);
+      .get(getMotorApi)
+      .then((response) => {
+        console.log(response.data); // log the response data
+        const motor = response.data.find((motor) => motor.motor_id === id); // find the motor with the matching id
+        if (motor) {
+          setMotorData(motor.sensors); // set sensor data for the found motor
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  if (!motor) {
-    return <p>No motor found</p>;
-  }
-
+  console.log(motorData, "this is the motor data");
   return (
     <div className="user mt-5">
-      <h1>Motor Details</h1>
-      <p>Motor ID: {motor.motor_id}</p>
-      <h2>Sensors:</h2>
       <table className="table table-bordered">
         <thead>
           <tr>
@@ -41,11 +38,10 @@ const ShowSingle = () => {
             <th>Current</th>
             <th>RPM</th>
             <th>Timestamp</th>
-            <th>ID</th>
           </tr>
         </thead>
         <tbody>
-          {motor.sensors.map((sensor, index) => (
+          {motorData.map((sensor, index) => (
             <tr key={index}>
               <td>{sensor.temperature}</td>
               <td>{sensor.vibration}</td>
@@ -53,7 +49,6 @@ const ShowSingle = () => {
               <td>{sensor.current}</td>
               <td>{sensor.rpm}</td>
               <td>{sensor.timestamp}</td>
-              <td>{sensor.id}</td>
             </tr>
           ))}
         </tbody>
@@ -62,4 +57,4 @@ const ShowSingle = () => {
   );
 };
 
-export default ShowSingle;
+export default EditUser;
