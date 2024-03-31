@@ -7,7 +7,6 @@ import AboutUs from "./Page/AboutUsPage/AboutUs.jsx";
 import Contact from "./Page/ContactPage/Contact.jsx";
 import Home from "./Page/Home/Home.jsx";
 import Factory from "./Page/FactoryPage/Factory.jsx";
-import Mutiview from "./Page/MutiviewPage/Mutiview.jsx";
 import Record from "./Page/RecordPage/Record.jsx";
 import FavMotors from "./Page/FavMotorPage/FavMotors.jsx";
 import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
@@ -29,7 +28,6 @@ function App() {
           <Route path="/all-motors" element={<AllMotors />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/factory" element={<Factory />}></Route>
-          <Route path="/multi-view" element={<Mutiview />}></Route>
           <Route path="/record" element={<Record />}></Route>
           <Route path="/favorite" element={<FavMotors />}></Route>
           <Route path="/feature" element={<Feature />}></Route>

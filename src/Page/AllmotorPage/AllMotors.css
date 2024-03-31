@@ -66,6 +66,13 @@
     padding: 20px;
 }
 
+.sub-motor-box{
+    width: 20%;
+    justify-items:center ;
+    align-items: center;
+    text-align: center;
+}
+
 .More-Detail-button{
     background-color: var(--accentColor);
     color: #fff;
@@ -79,4 +86,73 @@
     cursor: pointer;
     background-color: #5DC8BE;
     
+}
+
+.AllMotor-header{
+    align-self: flex-start;
+    margin-bottom:40px ;
+    margin-left: 40px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    border-radius: 20px;
+    width: 390px;
+    height: 150px;
+    z-index: 999;
+    padding: 20px; 
+}
+
+.modal-content{
+    width: 100%;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey */
+    z-index: 999; /* Ensure it's above other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motorID-input{
+    width: 97%;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 5px;
+    border: solid #ACACAC 1px;
+}
+
+.modal-button-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between ;
+}
+
+.Close-button{
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #FF5050;
+    color: white;
+    border: solid #ACACAC 0px;
+}
+
+.modal-submit-button{
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #51C28E;
+    color: white;
+    border: solid #ACACAC 0px;
 }

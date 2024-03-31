@@ -14,14 +14,9 @@ export default function NavigationBar() {
                     <li>
                         <img src={logo} alt="logo" />
                     </li>
-                    <div className="dropdown">
-                        <button onClick={() => setIsOpen(!isOpen)}>ALL MOTORS</button>
-                        {isOpen && (
-                            <div className="dropdown-menu">
-                                <Link to="/all-motors">ALL MOTORS</Link>
-                            </div>
-                        )}
-                    </div>
+                    <li>
+                        <Link to="/all-motors">ALL MOTORS</Link>
+                    </li>
                     <li>
                         <Link to="/record">RECORD</Link>  
                     </li>

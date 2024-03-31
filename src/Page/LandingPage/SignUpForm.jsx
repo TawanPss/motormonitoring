@@ -1,4 +1,5 @@
 import "./SignUpForm.css"
+import { Link  , useNavigate} from 'react-router-dom';
 export default function SignupForm() {
   return (
     <>
@@ -8,7 +9,7 @@ export default function SignupForm() {
         </div>
       <div className="signup-container">
       <input type="email" className="signup-input" placeholder="Insert email address"/>
-      <button type="submit" className="signup-button">SIGN UP</button>
+      <button type="submit" className="signup-button"><Link to={'/register'}>Register</Link></button>
       </div>
     </>
   );

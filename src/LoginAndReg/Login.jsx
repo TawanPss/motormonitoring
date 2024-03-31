@@ -16,7 +16,7 @@ export default function Login() {
         //////////////// Run Login Api Here ///////////////
         
         alert(email + password)
-        navigate("/home")
+        navigate("/all-motors")
         console.log(data.message)
     }
 
