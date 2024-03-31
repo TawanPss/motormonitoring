@@ -5,8 +5,7 @@ export default function AboutUs() {
     return (
       <>
       <Element name="about" >
-      
-      <ParagraphAbout />
+        <ParagraphAbout />
       </Element>
       </>
     );

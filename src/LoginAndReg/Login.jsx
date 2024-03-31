@@ -33,21 +33,16 @@ export default function Login() {
         <div className="container">
             <h1>{data.message}</h1>
             <h2 className="component-header">Sign in</h2>
-            <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="inputContainner">
-                <input className="input-form" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
-            </div>
-            <div className="inputContainner">
-                <input className="input-form" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
-            </div>
-            <div className="bottomForm">
-                <button className="submit-button" type='submit'>Login</button>
-                <div className='links'>
-                    <p>Forgot Password</p>
-                    <p>I don't have an account?</p>
-                    <Link to={'/register'}>Register</Link>
+            <form onSubmit={(e) => handleSubmit(e)} className='loginForm'>
+                <div className='inputContainner'>
+                    <input className="Login-Page-input-form" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text" />
+                    <input className="Login-Page-input-form" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
                 </div>
-            </div>
+                <div className='links'>
+                    <button className="Login-Page-submit-button" type='submit'>Login</button>
+                    <p>Forgot Password</p>
+                    <p>I don't have an account? <Link to={'/register'}>Register</Link></p>
+                </div>
             </form>
         </div>
         

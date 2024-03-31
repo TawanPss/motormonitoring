@@ -5,6 +5,7 @@ export default function ParagraphAbout() {
   return (
     <>
     <div className="para-container">
+      <h1 className="Paragraph-Header">What is ANF Motor Monitoring System?</h1>
       <div className="para1">
         <img src={img1} />
         <p>
