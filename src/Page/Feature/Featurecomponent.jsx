@@ -21,24 +21,9 @@ export default function Featurecomponent() {
             <p>Machine Health Monitoring</p>
           </div>
 
-          <div className="Output-tracking">
-            <img className="Output-tracking-img" src={Output_tracking} />
-            <p>Production Output Tracking</p>
-          </div>
-
-        <div className="Downtime">
-        <img className="Downtime-img" src={Downtime} />
-            <p>Downtime Notification</p>
-        </div>
-
           <div className="Protection-data">
             <img className="Protection-data-img" src={Protection_data} />
-            <p>Production Data</p>
-          </div>
-
-          <div className="Multiview">
-            <img className="Multiview-img" src={Multiview} />
-            <p>Multiview Mornitoring</p>
+            <p>Data Recording</p>
           </div>
 
           <div className="Sensor">

@@ -7,9 +7,15 @@
 .para1, .para2 {
     display: flex; 
     align-items: center; 
-    margin: 4vw ; 
-    gap: 20px; 
-    text-align: right;
+    margin: 40px ; 
+    gap: 10px; 
+    text-align: left;
+}
+
+.Paragraph-Header{
+    font-size: 40px;
+    align-self: center;
+    margin-top: 40px;
 }
 
 

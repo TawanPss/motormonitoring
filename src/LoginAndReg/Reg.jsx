@@ -26,43 +26,34 @@ export default function Register() {
     return (
         <div className="container">
             <h2 className="component-header">Sign up</h2>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={(e) => handleSubmit(e)} className="loginForm">
                 <div className="inputContainner">
                     <input
-                        className="input-form"
+                        className="Login-Page-input-form"
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         type="text"
                     />
-                </div>
-                <div className="inputContainner">
                     <input
-                        className="input-form"
+                        className="Login-Page-input-form"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         type="text"
                     />
-                </div>
-                <div className="inputContainner">
                     <input
-                        className="input-form"
+                        className="Login-Page-input-form"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                     />
-                </div>
-                <div className="bottomForm">
-                    <button className="submit-button" type="submit">
-                        Sign up
-                    </button>
-                    <div className="links">
-                        <p>I already have an account.</p>
-                        <Link to={"/sign-in"}>Sign In</Link>
-                    </div>
-                </div>
+                </div>  
+                <div className="links">
+                    <button className="Login-Page-submit-button" type="submit">Sign up</button>
+                    <p>I already have an account <Link to={"/sign-in"}>Sign In</Link> </p>
+                </div>    
             </form>
             {error && <p className="error-message">{error}</p>} {/* Display error message if exists */}
         </div>

@@ -30,9 +30,7 @@ export default function LandingHeader() {
           <li className="signin">
             <Link to="/sign-in">SIGN IN</Link>
           </li>
-          <li>
-            <FiMenu />
-          </li>
+          
         </ul>
       </nav>
     </>

@@ -1,47 +1,69 @@
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import './AllMotors.css'
+import { Link  , useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import Popup from 'reactjs-popup';
 
 export default function AllMotors(){
+
+    
     return(
         <>
             <NavigationBar/>
             <div className="all-motors-container">
+                <h1 className="AllMotor-header">All Motors</h1>
                 <div className="motor-list-container">
                     <div className="table-header">
-                        <text>Motor Name</text>
-                        <text>Motor ID</text>
-                        <text>Department</text>
-                        <text>Status</text>
-                        <button className="Add-New-Motor-button" type="submit">Add New Motor</button>
+                        <div className="sub-motor-box">
+                            <p>Motor Name</p>
+                        </div>
+                        <div className="sub-motor-box">
+                            <p>Motor ID</p>
+                        </div>
+                        <div className="sub-motor-box">
+                            <p>Department</p>
+                        </div>    
+                        <div className="sub-motor-box">
+                            <p>Status</p>
+                        </div>
+                        <Popup trigger=
+                            {<button className="Add-New-Motor-button">Add New Motor</button>} 
+                            modal nested>
+                            {
+                                close => (
+                                    <>
+                                    <div className='modal-overlay' onClick={close}></div> 
+                                    <div className='modal'>
+                                    <div className="modal-header-box">
+                                            <p>Enter Motor ID</p>
+                                            <button onClick={() => close()} className="Close-button">X</button>
+                                        </div>
+                                        <div className='modal-content'>
+                                            <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="motorID-input"></input>
+                                            <button className="modal-submit-button">Add New Motor</button>
+                                        </div>
+                                    </div>
+                                </>
+                                )
+                            }
+                        </Popup>   
                     </div>
                     <div className="motor-box">
-                        <text>ABCDEFGHIJ</text>
-                        <text>88888888</text>
-                        <text>production</text>
-                        <text>Active</text>
+                        <div className="sub-motor-box">
+                            <p>ABCDEFGHIJ</p>
+                        </div>
+                        <div className="sub-motor-box">
+                            <p>xj12</p>
+                        </div>
+                        <div className="sub-motor-box">
+                            <p>Production</p>
+                        </div>
+                        <div className="sub-motor-box">
+                            <p>Active</p>
+                        </div>
                         <button className="More-Detail-button" type="submit">More Detail</button>
                     </div>
-                    <div className="motor-box">
-                        <text>ABCDEFGHIJ</text>
-                        <text>88888888</text>
-                        <text>production</text>
-                        <text>Active</text>
-                        <button className="More-Detail-button" type="submit">More Detail</button>
-                    </div>
-                    <div className="motor-box">
-                        <text>ABCDEFGHIJ</text>
-                        <text>88888888</text>
-                        <text>production</text>
-                        <text>Active</text>
-                        <button className="More-Detail-button" type="submit">More Detail</button>
-                    </div>
-                    <div className="motor-box">
-                        <text>ABCDEFGHIJ</text>
-                        <text>88888888</text>
-                        <text>production</text>
-                        <text>Active</text>
-                        <button className="More-Detail-button" type="submit">More Detail</button>
-                    </div>
+                    
 
                 </div>
 

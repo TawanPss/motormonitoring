@@ -4,8 +4,7 @@ import logo from "./logoV1.png";
 import './NavigationBar.css';
 import { useState } from 'react';
 
-export default function NavigationBar() {
-    const [isOpen, setIsOpen] = useState(false);
+export default function AdminNavigationBar() {
 
     return (
         <>
@@ -15,10 +14,7 @@ export default function NavigationBar() {
                         <img src={logo} alt="logo" />
                     </li>
                     <li>
-                        <Link to="/all-motors">ALL MOTORS</Link>
-                    </li>
-                    <li>
-                        <Link to="/record">RECORD</Link>  
+                        <Link to="/admin-customer-list">Customer List</Link>
                     </li>
                     <li>
                         <Link to="/" className="GosignOut" ><GoSignOut /></Link>  
