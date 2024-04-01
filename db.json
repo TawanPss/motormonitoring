@@ -1,179 +1,52 @@
 {
   "motors": [
     {
-      "_id": "ObjectId1",
-      "motor_id": "NodeMCU_ESP8266",
+      "_id": "611f4a7e8e4dbba247ec39af",
+      "motor_id": "NodeMCU_ESP8266_1",
       "sensors": [
         {
-          "temperature": 28.71001434,
-          "vibration": 89.51042175,
-          "voltage": 241.3634644,
-          "current": 200.8031769,
-          "rpm": 133.8369293,
-          "timestamp": "2024-03-09T16:46:24.755+00:00",
+          "temperature": 28.71,
+          "vibration": 89.51,
+          "voltage": 241.36,
+          "current": 200.80,
+          "rpm": 133.84,
+          "timestamp": "2024-03-09T16:46:24.755Z",
           "id": "3989"
         },
         {
-          "temperature": 75.61138916,
-          "vibration": 97.74619293,
-          "voltage": 263.8448486,
-          "current": 109.2900848,
-          "rpm": 196.7313995,
-          "timestamp": "2024-03-09T16:46:29.951+00:00",
+          "temperature": 75.61,
+          "vibration": 97.75,
+          "voltage": 263.84,
+          "current": 109.29,
+          "rpm": 196.73,
+          "timestamp": "2024-03-09T16:46:29.951Z",
           "id": "503c"
         }
-      ],
-      "id": "f22f"
+      ]
     },
     {
-      "id": "5814",
-      "motor_id": "",
-      "sensors": []
-    },
-    {
-      "id": "5931",
-      "motor_id": "",
-      "sensors": []
-    },
-    {
-      "id": "f3e9",
-      "motor_id": "fdsafdsafsdaf",
-      "sensors": []
-    },
-    {
-      "id": "6a68",
-      "motor_id": "",
-      "sensors": []
-    },
-    {
-      "id": "8648",
-      "motor_id": "",
-      "sensors": []
-    },
-    {
-      "id": "652e",
-      "motor_id": "",
-      "sensors": []
-    },
-    {
-      "id": "8a55",
-      "motor_id": "fdsafdsafsdaf",
-      "sensors": []
-    },
-    {
-      "id": "003a",
-      "motor_id": "fdsafdsafsdaf",
-      "sensors": []
-    },
-    {
-      "id": "bdd6",
-      "motor_id": "fdsafdsafsdaf",
-      "sensors": []
-    },
-    {
-      "id": "e396",
-      "motor_id": "fdsafdsafsdaf",
-      "sensors": []
-    },
-    {
-      "id": "bb6a",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "0f84",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "5108",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "3c6d",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "5dcf",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "2b37",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "856e",
-      "motor_id": "fdsafdsafsda",
-      "sensors": []
-    },
-    {
-      "id": "abc8",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "42e9",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "5ab6",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "4bbd",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "a0bc",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "9773",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "b819",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "e783",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "a6de",
-      "motor_id": "fds",
-      "sensors": []
-    },
-    {
-      "id": "d0eb",
-      "motor_id": "12121",
-      "sensors": []
-    },
-    {
-      "id": "87cd",
-      "motor_id": "12121",
-      "sensors": []
-    },
-    {
-      "id": "8c6b",
-      "motor_id": "12121",
-      "sensors": []
-    },
-    {
-      "id": "7192",
-      "motor_id": "NodeMCU_ESP8266",
-      "sensors": []
+      "_id": "611f4a7e8e4dbba247ec39b0",
+      "motor_id": "NodeMCU_ESP8266_2",
+      "sensors": [
+        {
+          "temperature": 30.10,
+          "vibration": 90.25,
+          "voltage": 240.65,
+          "current": 210.50,
+          "rpm": 130.21,
+          "timestamp": "2024-03-10T10:15:30.123Z",
+          "id": "4892"
+        },
+        {
+          "temperature": 73.20,
+          "vibration": 95.75,
+          "voltage": 266.80,
+          "current": 105.30,
+          "rpm": 190.25,
+          "timestamp": "2024-03-10T10:15:35.342Z",
+          "id": "59af"
+        }
+      ]
     }
   ]
 }
