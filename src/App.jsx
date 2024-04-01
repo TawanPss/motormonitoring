@@ -6,15 +6,15 @@ import Landing from "./Page/LandingPage/Landing.jsx";
 import AboutUs from "./Page/AboutUsPage/AboutUs.jsx";
 import Contact from "./Page/ContactPage/Contact.jsx";
 import Home from "./Page/Home/Home.jsx";
-import Factory from "./Page/FactoryPage/Factory.jsx";
 import Record from "./Page/RecordPage/Record.jsx";
-import FavMotors from "./Page/FavMotorPage/FavMotors.jsx";
 import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
 import Feature from "./Page/Feature/Feature.jsx";
 import Myaccount from "./Page/MyaccountPage/Myaccount.jsx";
-import NewMotor from "./Page/NewMotorPage/NewMotorPage.jsx";
+import NewMotor from "./Page/Admin_NewMotorPage/NewMotorPage.jsx";
 import MotorPage from "./Page/MotorPage/Motorpage.jsx";
 import CreateMotor from "./Page/CRUD/Create.jsx";
+import CustomerList from "./Page/Admin_Customer/CustomerList.jsx";
+import CustomerMotorList from "./Page/Admin_MotorList/CustomerMotorList.jsx";
 function App() {
   return (
     <>
@@ -27,13 +27,13 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all-motors" element={<AllMotors />}></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/factory" element={<Factory />}></Route>
           <Route path="/record" element={<Record />}></Route>
-          <Route path="/favorite" element={<FavMotors />}></Route>
           <Route path="/feature" element={<Feature />}></Route>
           <Route path="/profile" element={<Myaccount />}></Route>
-          <Route path="/new-motor" element={<NewMotor/>}></Route>
+          <Route path="/admin-new-motor" element={<NewMotor/>}></Route>
           <Route path="/motor-" element={<CreateMotor/>}></Route>
+          <Route path="/admin-customer-list" element={<CustomerList/>}></Route>
+          <Route path="/admin-customer-motor-list" element={<CustomerMotorList/>}></Route>
           </Routes>
       </BrowserRouter>
     </>

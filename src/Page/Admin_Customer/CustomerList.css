@@ -1,4 +1,10 @@
-.all-motors-container {
+.customer-Header{
+    align-self: flex-start;
+    margin-bottom:40px ;
+    margin-left: 40px;
+}
+
+.customer-container{
     margin-top: 10%;
     width: 100%;
     display: flex;
@@ -10,7 +16,8 @@
     margin: 0;
     padding-top: 5%;
 }
-.motor-list-container{
+
+.customer-list-container{
     background: #fff;
     color: #000000;
     width: 90%;
@@ -25,35 +32,7 @@
     border-radius: 30px;
 }
 
-.table-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:space-around ;
-    width: 100%;
-    color: #000;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: large;
-
-}
-
-.Add-New-Motor-button{
-    background-color: var(--accentColor);
-    color: #fff;
-    font-size: medium;
-    border: none;
-    border-radius: 15px;
-    width: 20%;
-    height: 45px;
-    margin-top: 0px;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-    background-color: #51C28E;
-}
-
-.motor-box{
+.customer-box{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -66,35 +45,68 @@
     padding: 20px;
 }
 
-.sub-motor-box{
+.customer-table-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around ;
+    width: 100%;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.sub-customer-box{
     width: 20%;
     justify-items:center ;
     align-items: center;
     text-align: center;
 }
 
-.More-Detail-button{
-    background-color: var(--accentColor);
-    color: #fff;
-    font-size: medium;
-    border: none;
-    border-radius: 15px;
-    width: 20%;
-    height: 45px;
-    margin-top: 0px;
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
+.sub-customer-box-2{
+    width: 40%;
+    justify-items:center ;
+    align-items: center;
+    text-align: center;
+}
+
+.Add-Motor-button{
+    border-radius: 8px;
+    background-color: #51C28E;
+    color: white;
+    border: solid #ACACAC 0px;
+    margin-right: 10px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.Delete-Motor-button{
+    border-radius: 8px;
+    background-color: #FF5050;
+    color: white;
+    border: solid #ACACAC 0px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.motor-list-button{
+    border-radius: 8px;
     background-color: #5DC8BE;
-    
+    color: white;
+    border: solid #ACACAC 0px;
+    margin-right: 10px;
+    font-size: 15px;
+    padding: 10px;
+
 }
 
-.AllMotor-header{
-    align-self: flex-start;
-    margin-bottom:40px ;
-    margin-left: 40px;
+.Link-No-underline{
+    text-decoration: none;
 }
 
-.modal {
+.Ctm-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -107,8 +119,7 @@
     padding: 20px; 
 }
 
-.modal-content{
-    width: 100%;
+.Ctm-modal-content{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -116,7 +127,7 @@
     justify-content:center ;
 }
 
-.modal-overlay {
+.Ctm-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -129,7 +140,7 @@
     align-items: center;
 }
 
-.motorID-input{
+.Ctm-motorID-input{
     width: 97%;
     height: 30px;
     margin-top: 20px;
@@ -139,14 +150,14 @@
     border: solid #ACACAC 1px;
 }
 
-.modal-header-box{
+.Ctm-modal-header-box{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:space-between ;
 }
 
-.Close-button{
+.Ctm-Close-button{
     padding: 0px;
     color: black;
     font-size: medium;
@@ -155,10 +166,10 @@
     background-color: #fefefe;
 }
 
-.modal-submit-button{
-    padding: 10px;
+.Ctm-modal-delete-button{
+    padding: 5px;
     border-radius: 8px;
-    background-color: #51C28E;
+    background-color: #FF5050;
     color: white;
     border: solid #ACACAC 0px;
 }

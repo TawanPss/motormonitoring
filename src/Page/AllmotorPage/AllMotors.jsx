@@ -34,15 +34,12 @@ export default function AllMotors(){
                                     <>
                                     <div className='modal-overlay' onClick={close}></div> 
                                     <div className='modal'>
-                                        <div className='modal-content'>
+                                    <div className="modal-header-box">
                                             <p>Enter Motor ID</p>
-                                            <form>
-                                                <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="motorID-input"></input>
-                                            </form>
-                                            
+                                            <button onClick={() => close()} className="Close-button">X</button>
                                         </div>
-                                        <div className="modal-button-box">
-                                            <button onClick={() => close()} className="Close-button">Close</button>
+                                        <div className='modal-content'>
+                                            <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="motorID-input"></input>
                                             <button className="modal-submit-button">Add New Motor</button>
                                         </div>
                                     </div>

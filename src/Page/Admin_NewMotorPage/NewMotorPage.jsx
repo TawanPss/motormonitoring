@@ -1,6 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import NavigationBar from "../../component/NavigationBar/NavigationBar"
+import AdminNavigationBar from '../../component/NavigationBar/AdminNavigationBar';
 import './NewMotorPage.css';
 
 
@@ -22,7 +23,7 @@ export default function NewMotorPage() {
 
     return (
         <>
-            <NavigationBar />
+            <AdminNavigationBar />
             <div className="ctn">
                 <form className="inputctn" onSubmit={handleSubmit}>
                     <h1>Add The New Motor</h1>
