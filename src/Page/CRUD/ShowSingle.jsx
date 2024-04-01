@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { PieChartComponent,LineChartComponent,BarChartComponent } from "./Graph.jsx";
 
 const EditUser = () => {
   const [motorData, setMotorData] = useState([]);
   const { id } = useParams();
-  const getMotorApi = "http://localhost:3000/motors"; // replace with your actual API
+  const getMotorApi = "http://localhost:3000/motors"; 
 
   useEffect(() => {
     getMotorData();
@@ -15,10 +16,10 @@ const EditUser = () => {
     axios
       .get(getMotorApi)
       .then((response) => {
-        console.log(response.data); // log the response data
-        const motor = response.data.find((motor) => motor.motor_id === id); // find the motor with the matching id
+        console.log(response.data); 
+        const motor = response.data.find((motor) => motor.motor_id === id); 
         if (motor) {
-          setMotorData(motor.sensors); // set sensor data for the found motor
+          setMotorData(motor.sensors); 
         }
       })
       .catch((err) => {
@@ -53,6 +54,11 @@ const EditUser = () => {
           ))}
         </tbody>
       </table>
+      <PieChartComponent data={motorData} dataKey="temperature" />
+      <LineChartComponent data={motorData} dataKey="vibration" />
+      <BarChartComponent data={motorData} dataKey="current" />
+      <BarChartComponent data={motorData} dataKey="voltage" />
+      <PieChartComponent data={motorData} dataKey="rpm" />
     </div>
   );
 };
