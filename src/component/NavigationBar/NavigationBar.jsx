@@ -1,6 +1,7 @@
 import { GoSignOut } from "react-icons/go";
 import { Link } from "react-router-dom";
 import logo from "./logoV1.png";
+import profilepic from "./profilepic.png"
 import './NavigationBar.css';
 import { useState } from 'react';
 
@@ -20,10 +21,19 @@ export default function NavigationBar() {
                     <li>
                         <Link to="/record">RECORD</Link>  
                     </li>
+                    
+                </ul>
+                <ul className="ListNavigate-end">
                     <li>
-                        <Link to="/" className="GosignOut" ><GoSignOut /></Link>  
+                        <Link to="/profile"><img src={profilepic} style={{width:"50px"}}/></Link>
+                    </li>
+                    <li>
+                        <button className="sign-out-button"> <Link to="/" className="Link-No-underline">Sign out</Link></button>
+                         
                     </li>
                 </ul>
+                
+
             </nav>
         </>
     );

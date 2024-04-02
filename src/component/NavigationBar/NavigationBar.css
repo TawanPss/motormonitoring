@@ -1,8 +1,15 @@
 .ListNavigate {
-  background-color:black;
   padding: 10px; 
   display: flex;
   justify-content:left;
+  align-items: center;
+  gap: 2vw;
+}
+
+.ListNavigate-end{
+  padding: 10px; 
+  display: flex;
+  justify-self:right;
   align-items: center;
   gap: 2vw;
 }
@@ -57,4 +64,27 @@
 
 .dropdown:hover .dropdown-menu {
   display: block;
+}
+
+.profile-pic{
+  width: 100px;
+  height: 100px;
+}
+
+.NavNavigate{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color:black;
+  justify-content: space-between;
+}
+
+.sign-out-button{
+  padding: 10px;
+  font-size: medium;
+  background-color: #FF5050;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-right: 20px;
 }

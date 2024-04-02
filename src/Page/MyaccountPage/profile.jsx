@@ -26,23 +26,38 @@ export default function Profile() {
 
   return (
     <div className="profile-container">
-      <div className="image-container">
-        <img src={image} alt="Profile" className="profile-image"/>
-  <input type="file" ref={fileInput} accept="image/*" id="file-input" className="profile-file-input" />
-  <label htmlFor="file-input" className="upload-icon">
-    <i className="fas fa-upload"><CgProfile /></i> 
-  </label>
+      <div className='Top-container'>
+          <div className="image-container">
+            <img src={image} alt="Profile" className="profile-image"/>
+            <input type="file" ref={fileInput} accept="image/*" id="file-input" className="profile-file-input" />
+            <label htmlFor="file-input" className="upload-icon">
+              <i className="fas fa-upload"><CgProfile /></i> 
+            </label>
+          </div>
+          <div className='current-profile-box'>
+            <h1 className="profile-name"><label>John Lennon</label> {name}</h1>
+            <p className="profile-email"><label>JohnLennon@gmail.com:</label> {email}</p>
+            <p className="profile-phone"><label>099-999-9999</label> {phone}</p>
+          </div>
       </div>
-      <h1 className="profile-name"><label>Name:</label> {name}</h1>
-      <p className="profile-email"><label>Email:</label> {email}</p>
-      <p className="profile-phone"><label>Phone:</label> {phone}</p>
+      <div className='lower-container'>
+        <div className='blank-container'>
 
-      <form onSubmit={handleSubmit} className="profile-form">
-        <p>Name:  <input ref={nameInput} type="text" placeholder="New name" className="profile-input"/></p>
-        <p>Email: <input ref={emailInput} type="email" placeholder="New email" className="profile-input"/></p>
-        <p>Phone: <input ref={phoneInput} type="tel" placeholder="New phone" pattern="[0-9]{10}" className="profile-input"/></p>
-        <button type="submit" className="profile-submit">Submit</button>
-      </form>
+        </div>
+        <form onSubmit={handleSubmit} className="profile-form">
+          <p className='form-text-label'>Edit Name</p>
+          <input ref={nameInput} type="text" placeholder="New name" className="profile-input"/>
+          <p className='form-text-label'>Change Email</p>
+          <input ref={emailInput} type="email" placeholder="New email" className="profile-input"/>
+          <p className='form-text-label'>Change Phone Number</p>
+          <input ref={phoneInput} type="tel" placeholder="New phone" pattern="[0-9]{10}" className="profile-input"/>
+          <button type="submit" className="profile-submit">Submit Change</button>
+        </form>
+      </div>
+      
+      
+
+      
     </div>
   );
 }
