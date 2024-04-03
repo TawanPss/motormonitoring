@@ -5,22 +5,29 @@ import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import Popup from 'reactjs-popup';
 
 const ShowMotor = () => {
-  const allMotorsApi = "http://localhost:3000/motors";
-  const [motors, setMotors] = useState([]);
+  const userApi = "http://localhost:3000/user";
+  const userId = "2f9a7c11-a2b7-47ad-8f66-6a32b8acc0c5"; // Set the desired user ID
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMotors();
+    getUserData();
   }, []);
 
-  const getMotors = () => {
+  const getUserData = () => {
     setIsLoading(true);
     axios
-      .get(allMotorsApi)
+      .get(userApi)
       .then((res) => {
         console.log("API Response:", res.data);
-        setMotors(res.data);
+        if (res.data && res.data.user_id === userId) {
+          console.log("User data found:", res.data);
+          setUser(res.data);
+        } else {
+          console.log("User not found or user ID mismatch");
+          setError("User not found");
+        }
         setIsLoading(false);
       })
       .catch((err) => {
@@ -31,7 +38,7 @@ const ShowMotor = () => {
   };
 
   const isMotorActive = (motor) => {
-    const latestSensorReading = motor.sensors[motor.sensors.length - 1];
+    const latestSensorReading = motor.motor_details.sensors[motor.motor_details.sensors.length - 1];
     const currentTime = new Date();
     const sensorReadingTime = new Date(latestSensorReading.timestamp);
     const timeDifference = currentTime - sensorReadingTime;
@@ -46,6 +53,10 @@ const ShowMotor = () => {
 
   if (error) {
     return <p>Error: {error}</p>;
+  }
+
+  if (!user) {
+    return <p>No user data available.</p>;
   }
 
   return (
@@ -89,13 +100,13 @@ const ShowMotor = () => {
               )}
             </Popup>
           </div>
-          {motors.map((motor) => (
-            <div key={motor._id} className="motor-box">
+          {user.motor_owned.map((motor) => (
+            <div key={motor.motor_id} className="motor-box">
               <div className="sub-motor-box">
-                <p>{motor.motor_name}</p>
+                <p>Motor ID: {motor.motor_id}</p>
               </div>
               <div className="sub-motor-box">
-                <p>{motor.motor_id}</p>
+                <p>Sensor ID: {motor.motor_details.sensors[0].id}</p>
               </div>
               <div className="sub-motor-box">
                 <p>Production</p>

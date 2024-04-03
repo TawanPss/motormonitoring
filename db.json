@@ -1,52 +1,63 @@
 {
-  "motors": [
-    {
-      "_id": "611f4a7e8e4dbba247ec39af",
-      "motor_id": "NodeMCU_ESP8266_1",
-      "sensors": [
-        {
-          "temperature": 28.71,
-          "vibration": 89.51,
-          "voltage": 241.36,
-          "current": 200.80,
-          "rpm": 133.84,
-          "timestamp": "2024-03-09T16:46:24.755Z",
-          "id": "3989"
-        },
-        {
-          "temperature": 75.61,
-          "vibration": 97.75,
-          "voltage": 263.84,
-          "current": 109.29,
-          "rpm": 196.73,
-          "timestamp": "2024-03-09T16:46:29.951Z",
-          "id": "503c"
+  "user": {
+    "user_id": "2f9a7c11-a2b7-47ad-8f66-6a32b8acc0c5",
+    "username": "Rinn",
+    "email": "Itoshi@gmail.com",
+    "motor_owned": [
+      {
+        "motor_id": "XLR8",
+        "motor_details": {
+          "_id": "611f4a7e8e4dbba247ec39af",
+          "motor_id": "NodeMCU_ESP8266_1",
+          "sensors": [
+            {
+              "temperature": 28.71,
+              "vibration": 89.51,
+              "voltage": 241.36,
+              "current": 200.80,
+              "rpm": 133.84,
+              "timestamp": "2024-03-09T16:46:24.755Z",
+              "id": "3989"
+            },
+            {
+              "temperature": 75.61,
+              "vibration": 97.75,
+              "voltage": 263.84,
+              "current": 109.29,
+              "rpm": 196.73,
+              "timestamp": "2024-03-09T16:46:29.951Z",
+              "id": "503c"
+            }
+          ]
         }
-      ]
-    },
-    {
-      "_id": "611f4a7e8e4dbba247ec39b0",
-      "motor_id": "NodeMCU_ESP8266_2",
-      "sensors": [
-        {
-          "temperature": 30.10,
-          "vibration": 90.25,
-          "voltage": 240.65,
-          "current": 210.50,
-          "rpm": 130.21,
-          "timestamp": "2024-03-10T10:15:30.123Z",
-          "id": "4892"
-        },
-        {
-          "temperature": 73.20,
-          "vibration": 95.75,
-          "voltage": 266.80,
-          "current": 105.30,
-          "rpm": 190.25,
-          "timestamp": "2024-03-10T10:15:35.342Z",
-          "id": "59af"
+      },
+      {
+        "motor_id": "XLR9",
+        "motor_details": {
+          "_id": "611f4a7e8e4dbba247ec39b0",
+          "motor_id": "NodeMCU_ESP8266_2",
+          "sensors": [
+            {
+              "temperature": 30.10,
+              "vibration": 90.25,
+              "voltage": 240.65,
+              "current": 210.50,
+              "rpm": 130.21,
+              "timestamp": "2024-03-10T10:15:30.123Z",
+              "id": "4892"
+            },
+            {
+              "temperature": 73.20,
+              "vibration": 95.75,
+              "voltage": 266.80,
+              "current": 105.30,
+              "rpm": 190.25,
+              "timestamp": "2024-03-10T10:15:35.342Z",
+              "id": "59af"
+            }
+          ]
         }
-      ]
-    }
-  ]
+      }
+    ]
+  }
 }
