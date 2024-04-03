@@ -1,35 +1,75 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PieChartComponent,LineChartComponent,BarChartComponent } from "./Graph.jsx";
+import { PieChartComponent, LineChartComponent, BarChartComponent } from "./Graph.jsx";
 import './Graph.css';
 import NavigationBar from "../../component/NavigationBar/NavigationBar.jsx";
 
-const EditUser = () => {
+const MotorDetail = () => {
   const [motorData, setMotorData] = useState([]);
-  const { id } = useParams();
-  const getMotorApi = "http://localhost:3000/motors"; 
+  const [error, setError] = useState(null);
+  const { id } = useParams(); // Update the parameter name to 'id'
+  const userApi = "http://localhost:3000/user";
 
   useEffect(() => {
-    getMotorData();
-  }, []);
+    console.log("useEffect called");
+    if (id) { // Update the condition to check for 'id'
+      console.log("Motor ID:", id);
+      getMotorData();
+    } else {
+      console.log("Motor ID not provided");
+      setError("Motor ID not provided");
+    }
+  }, [id]); // Update the dependency to 'id'
 
   const getMotorData = () => {
+    console.log("getMotorData called");
     axios
-      .get(getMotorApi)
+      .get(userApi)
       .then((response) => {
-        console.log(response.data); 
-        const motor = response.data.find((motor) => motor.motor_id === id); 
-        if (motor) {
-          setMotorData(motor.sensors); 
+        console.log("API Response:", response.data);
+        if (response.data && response.data.motor_owned) {
+          console.log("Motor Owned Array:", response.data.motor_owned);
+          const motor = response.data.motor_owned.find((motor) => motor.motor_id === id); // Update the comparison to 'id'
+          if (motor) {
+            console.log("Matching Motor:", motor);
+            if (motor.motor_details && motor.motor_details.sensors) {
+              console.log("Sensor Data:", motor.motor_details.sensors);
+              const sensorData = motor.motor_details.sensors;
+              setMotorData((prevData) => {
+                console.log("Previous Motor Data:", prevData);
+                console.log("Updated Motor Data:", sensorData);
+                return sensorData;
+              });
+            } else {
+              console.log("Motor details or sensors data not found");
+              setError("Motor details or sensors data not found");
+            }
+          } else {
+            console.log(`Motor with ID ${id} not found`); // Update the log to use 'id'
+            setError(`Motor with ID ${id} not found`); // Update the error message to use 'id'
+          }
+        } else {
+          console.log("User data not found or invalid response");
+          setError("User data not found or invalid response");
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log("API Error:", err);
+        setError("An error occurred while fetching data");
       });
   };
 
-  console.log(motorData, "this is the motor data");
+  console.log("Motor Data:", motorData);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (motorData.length === 0) {
+    return <p>No motor data available.</p>;
+  }
+
   return (
     <div className="graph-container">
       <NavigationBar />
@@ -58,14 +98,14 @@ const EditUser = () => {
         </tbody>
       </table>
       <div className="dashboard">
-  <PieChartComponent className="chart" data={motorData} dataKey="temperature" />
-  <PieChartComponent className="chart" data={motorData} dataKey="rpm" />
-  <BarChartComponent className="chart" data={motorData} dataKey="current" />
-  <BarChartComponent className="chart" data={motorData} dataKey="voltage" />
-  <LineChartComponent className="chart vibration" data={motorData} dataKey="vibration" />
-</div>
+        <PieChartComponent className="chart" data={motorData} dataKey="temperature" />
+        <PieChartComponent className="chart" data={motorData} dataKey="rpm" />
+        <BarChartComponent className="chart" data={motorData} dataKey="current" />
+        <BarChartComponent className="chart" data={motorData} dataKey="voltage" />
+        <LineChartComponent className="chart vibration" data={motorData} dataKey="vibration" />
+      </div>
     </div>
   );
 };
 
-export default EditUser;
+export default MotorDetail;
