@@ -1,0 +1,45 @@
+body{
+    background-color:#f3f3f3 ;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: 1px solid transparent;
+    padding: 2px;
+    background-color: #fff;
+    margin:10% ;
+    align-items: center;
+    border-radius: 10px;
+    
+  }
+  
+  .dashboard .chart {
+    flex: 0 0 calc(50% - 1rem); 
+    max-width: calc(50% - 1rem); 
+    margin: 0.5rem;
+  }
+  
+  .dashboard .chart.vibration {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+
+.pie-data{
+    text-align: center;
+    margin-top: -45%;
+    margin-bottom: 30%;
+}
+
+.radial-gauge{
+    margin-right: 35%;
+}
+
+.line-chart{
+    margin-top: 15%;
+}
