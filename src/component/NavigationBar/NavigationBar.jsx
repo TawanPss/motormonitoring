@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import logo from "./logoV1.png";
 import profilepic from "./profilepic.png"
 import './NavigationBar.css';
-import { useState } from 'react';
 
 export default function NavigationBar() {
-    const [isOpen, setIsOpen] = useState(false);
-
+    const handleSignOut = () => {
+        document.cookie = "token=;";
+    }
     return (
         <>
             <nav className="NavNavigate">
@@ -28,8 +28,7 @@ export default function NavigationBar() {
                         <Link to="/profile"><img src={profilepic} style={{width:"50px"}}/></Link>
                     </li>
                     <li>
-                        <button className="sign-out-button"> <Link to="/" className="Link-No-underline">Sign out</Link></button>
-                         
+                        <button className="sign-out-button" onClick={handleSignOut}> <Link to="/" className="Link-No-underline">Sign out</Link></button>
                     </li>
                 </ul>
                 

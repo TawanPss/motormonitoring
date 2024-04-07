@@ -5,27 +5,38 @@ import { Link  , useNavigate} from 'react-router-dom';
 
 export default function Login() {
     const navigate =useNavigate()
-    
-
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [data, setData] = useState([]);
-
-    const handleSubmit = (e) => {
+    const endpoint = `api/users/login`;
+    const reqOption = {
+        method: 'POST',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email: email,
+            passwd: password
+        })
+    };
+    const handleSubmit = async(e) => {
         e.preventDefault();
         //////////////// Run Login Api Here ///////////////
-        
-        alert(email + password)
-        navigate("/all-motors")
+        const res = await fetch(endpoint, reqOption);
+        if(res.ok){
+            console.log(res.data);
+            setData(res.data);
+            navigate("/all-motors")
+        }
+        // alert(email + password)
+    
         console.log(data.message)
     }
 
     useEffect(() => {
-    fetch('http://127.0.0.1:8000')
+    fetch(`api/`)
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error('Error fetching data:', error));
-    //   console.log(data.message)
+      console.log(data.message)
     }, []);
 
     return(

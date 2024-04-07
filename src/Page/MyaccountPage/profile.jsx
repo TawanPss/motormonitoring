@@ -1,9 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './profile.css';
+import { getCookie } from '../../component/API/Cookie';
 import { CgProfile } from "react-icons/cg";
 const profilePic ="src/Page/MyaccountPage/nullprofile.png";
 
 export default function Profile() {
+  const [user, setUser] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -12,6 +14,33 @@ export default function Profile() {
   const emailInput = useRef();
   const phoneInput = useRef();
   const fileInput = useRef();
+
+  useEffect(() => {
+    getUser()
+  }, []);
+
+  const getUser = async() =>{
+    const userApi = `api/users/get/user_data`;
+    try{
+      const token = getCookie('token');
+      console.log(token);
+      const reqOption = {
+        method: "POST",
+        headers:{
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      const res = await fetch(userApi,reqOption);
+      if(res.ok){
+        const data = await res.json()
+        console.log(data);
+        setUser(data);
+      }
+    }catch(err){
+      console.log(err);
+    }
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,9 +64,9 @@ export default function Profile() {
             </label>
           </div>
           <div className='current-profile-box'>
-            <h1 className="profile-name"><label>John Lennon</label> {name}</h1>
-            <p className="profile-email"><label>JohnLennon@gmail.com:</label> {email}</p>
-            <p className="profile-phone"><label>099-999-9999</label> {phone}</p>
+            <h1 className="profile-name"><label>{user ? user.username : 'null'}</label> {name}</h1>
+            <p className="profile-email"><label>{user ? user.email : 'null'}</label> {email}</p>
+            <p className="profile-phone"><label>{user ? user.role : 'null'}</label> {phone}</p>
           </div>
       </div>
       <div className='lower-container'>

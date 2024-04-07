@@ -1,50 +1,81 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+import { getCookie } from "../../component/API/Cookie";
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import Popup from 'reactjs-popup';
 
 const ShowMotor = () => {
-  const userApi = "http://localhost:3000/user";
-  const userId = "2f9a7c11-a2b7-47ad-8f66-6a32b8acc0c5"; // Set the desired user ID
+  const userApi = `api/users/get/user_data`;
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [motor_id, setMotorID] = useState(null);
+  
   useEffect(() => {
-    getUserData();
+    getUser();
+    // getUserData();
   }, []);
-
-  const getUserData = () => {
-    setIsLoading(true);
-    axios
-      .get(userApi)
-      .then((res) => {
-        console.log("API Response:", res.data);
-        if (res.data && res.data.user_id === userId) {
-          console.log("User data found:", res.data);
-          setUser(res.data);
-        } else {
-          console.log("User not found or user ID mismatch");
-          setError("User not found");
+  
+  const getUser = async () => {
+    try{
+      setIsLoading(true);
+      const token = getCookie('token');
+      console.log(token);
+      const reqOption = {
+        method: "POST",
+        headers:{
+          'Authorization': `Bearer ${token}`
         }
+      };
+      const res = await fetch(userApi,reqOption);
+      if(res.ok){
+        const data = await res.json()
+        console.log(data);
+        setUser(data);
         setIsLoading(false);
+      }
+    }catch(err){
+      setError(err);
+      console.log(err);
+    }
+  }
+
+  const addMotor = async() => {
+    const token = getCookie('token');
+    const endpoint = `api/users/add/motor`;
+    const reqOption = {
+      method: "POST",
+      headers:{
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        motor_id: motor_id
       })
-      .catch((err) => {
-        console.log(err);
-        setError(err.message);
-        setIsLoading(false);
-      });
-  };
+    };
+    try{
+      const res = await fetch(endpoint,reqOption);
+      if(res.ok){
+        const data = await res.json();
+        console.log(data);
+        redirect('/all-motors')
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   const isMotorActive = (motor) => {
-    const latestSensorReading = motor.motor_details.sensors[motor.motor_details.sensors.length - 1];
-    const currentTime = new Date();
-    const sensorReadingTime = new Date(latestSensorReading.timestamp);
-    const timeDifference = currentTime - sensorReadingTime;
-    const oneHourInMilliseconds = 60 * 60 * 1000; // 1 hour in milliseconds
+    // const latestSensorReading = motor.motor_details.sensors[motor.motor_details.sensors.length - 1];
+    // const currentTime = new Date();
+    // const sensorReadingTime = new Date(latestSensorReading.timestamp);
+    // const timeDifference = currentTime - sensorReadingTime;
+    // const oneHourInMilliseconds = 60 * 60 * 1000; // 1 hour in milliseconds
 
-    return timeDifference < oneHourInMilliseconds;
+    // return timeDifference < oneHourInMilliseconds;
+    return motor != null ? true : false;
   };
 
   if (isLoading) {
@@ -92,8 +123,8 @@ const ShowMotor = () => {
                       <button onClick={() => close()} className="Close-button">X</button>
                     </div>
                     <div className='modal-content'>
-                      <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="motorID-input"></input>
-                      <button className="modal-submit-button">Add New Motor</button>
+                      <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="motorID-input" value={motor_id} onChange={(e) => setMotorID(e.target.value)}></input>
+                      <button className="modal-submit-button" onClick={addMotor}>Add New Motor</button>
                     </div>
                   </div>
                 </>
@@ -106,7 +137,7 @@ const ShowMotor = () => {
                 <p>Motor ID: {motor.motor_id}</p>
               </div>
               <div className="sub-motor-box">
-                <p>Sensor ID: {motor.motor_details.sensors[0].id}</p>
+                <p>Sensor ID: {motor.motor_id}</p>
               </div>
               <div className="sub-motor-box">
                 <p>Production</p>
