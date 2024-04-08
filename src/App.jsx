@@ -18,6 +18,7 @@ import ShowSingle from "./Page/CRUD/ShowSingle.jsx";
 import CustomerList from "./Page/Admin_Customer/CustomerList.jsx";
 import CustomerMotorList from "./Page/Admin_MotorList/CustomerMotorList.jsx";
 import PrivateRoute from "./LoginAndReg/PrivateRoute.jsx";
+import ShowSingleMockup from "./Page/CRUD/ShowSingleMockup.jsx";
 function App() {
   const isAuthen = async() => {
     const isAuthUrl = `api/users/is_authen`;
@@ -58,6 +59,7 @@ function App() {
           <Route path="/show-motor/:id" element={<ShowSingle />} />
           <Route path="/admin-customer-list" element={<CustomerList/>}></Route>
           <Route path="/admin-customer-motor-list" element={<CustomerMotorList/>}></Route>
+          <Route path="/show-motor-mockup" element={<ShowSingleMockup/>}></Route>
           <Route path="/all-motors" element={
               <PrivateRoute isAuthen={isAuthen} >
                 <ShowMotor />

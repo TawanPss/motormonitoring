@@ -94,7 +94,24 @@ const MotorDetail = () => {
   return (
     <div className="graph-container">
       <NavigationBar />
-      <table className="table table-bordered">
+      <div className="graph-page-text-header">
+        <h1>fetch Motor Name</h1> 
+        <h1>fetch Motor ID</h1>
+      </div>
+      <div className="dashboard">
+        <div className="dashboard-row">
+          <PieChartComponent className="chart" data={motorData} dataKey="temperature" />
+          <LineChartComponent className="chart vibration" data={motorData} dataKey="vibration" />
+        </div>
+        <div className="dashboard-row">
+          <BarChartComponent className="chart" data={motorData} dataKey="current" />
+          <BarChartComponent className="chart" data={motorData} dataKey="voltage" />
+        </div>
+      </div>
+      <div className="table-text-header">
+        <h1>Data Log</h1>
+      </div>
+      <table className="monitor-table">
         <thead>
           <tr>
             <th>Temperature</th>
@@ -116,12 +133,6 @@ const MotorDetail = () => {
           ))}
         </tbody>
       </table>
-      <div className="dashboard">
-        <PieChartComponent className="chart" data={motorData} dataKey="temperature" />
-        <BarChartComponent className="chart" data={motorData} dataKey="current" />
-        <BarChartComponent className="chart" data={motorData} dataKey="voltage" />
-        <LineChartComponent className="chart vibration" data={motorData} dataKey="vibration" />
-      </div>
     </div>
   );
 };
