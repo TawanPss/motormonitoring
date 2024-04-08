@@ -17,7 +17,28 @@ import ShowMotor from "./Page/CRUD/Showmotor.jsx";
 import ShowSingle from "./Page/CRUD/ShowSingle.jsx";
 import CustomerList from "./Page/Admin_Customer/CustomerList.jsx";
 import CustomerMotorList from "./Page/Admin_MotorList/CustomerMotorList.jsx";
+import PrivateRoute from "./LoginAndReg/PrivateRoute.jsx";
 function App() {
+  const isAuthen = async() => {
+    const isAuthUrl = `api/users/is_authen`;
+    const reqAuth = {
+      method: 'GET',
+      headers:{'Content-Type': 'application/json'},
+    }
+    try{
+
+      const response = await fetch(isAuthUrl,reqAuth);
+      if(response.ok){
+        const msg = await response.json();
+        return msg.isAuthen;
+      }
+    }
+    catch(err){
+      console.error(err);
+    }
+  }
+
+
   return (
     <>
       <BrowserRouter>
@@ -27,7 +48,6 @@ function App() {
           <Route path="/contact-us" element={<Contact />}></Route>
           <Route path="/sign-in" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/all-motors" element={<ShowMotor />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/record" element={<Record />}></Route>
           <Route path="/feature" element={<Feature />}></Route>
@@ -38,6 +58,13 @@ function App() {
           <Route path="/show-motor/:id" element={<ShowSingle />} />
           <Route path="/admin-customer-list" element={<CustomerList/>}></Route>
           <Route path="/admin-customer-motor-list" element={<CustomerMotorList/>}></Route>
+          <Route path="/all-motors" element={
+              <PrivateRoute isAuthen={isAuthen} >
+                <ShowMotor />
+              </PrivateRoute>
+            }>
+          </Route>
+          <Route path="*" element={<p>Error 404 Not Found ...</p>} />
         </Routes>
       </BrowserRouter>
     </>

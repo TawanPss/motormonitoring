@@ -22,13 +22,11 @@ export default function Login() {
         //////////////// Run Login Api Here ///////////////
         const res = await fetch(endpoint, reqOption);
         if(res.ok){
-            console.log(res.data);
+            // console.log(res.data);
             setData(res.data);
             navigate("/all-motors")
         }
-        // alert(email + password)
     
-        console.log(data.message)
     }
 
     useEffect(() => {

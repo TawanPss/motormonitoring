@@ -1,19 +1,19 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PieChartComponent, LineChartComponent, BarChartComponent } from "./Graph.jsx";
-import './Graph.css';
 import NavigationBar from "../../component/NavigationBar/NavigationBar.jsx";
+import { baseApi } from "../../component/API/ApiComponent.jsx";
+import './Graph.css';
 
 const MotorDetail = () => {
+  const motorApi = `${baseApi}/devices/get/motor_data`;
   const [motorData, setMotorData] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams(); // Update the parameter name to 'id'
-  const motor_id = id;
   useEffect(() => {
     console.log("useEffect called");
     if (id) { // Update the condition to check for 'id'
-      console.log("Motor ID:", id);
+      // console.log("Motor ID:", id);
       // getMotorData();
       getMotor();
     } else {
@@ -23,27 +23,27 @@ const MotorDetail = () => {
   }, []); // Update the dependency to 'id'
 
   const getMotor = async() => {
-    const motorApi = `api/devices/get/motor_data`;
+    const reqOption = {
+      method: 'POST',
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          motor_id: id
+      })
+    };
     try{
-      const reqOption = {
-        method: 'POST',
-        headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          motor_id: motor_id
-        })
-      };
       const res = await fetch(motorApi, reqOption);
       if(res.ok){
-        const data = res.json();
+        const data = await res.json();
         console.log(data)
+        setMotorData(data.data);
       }
     }
     catch(err){
       console.log(err)
     }
-  }
+  };
 
-  const getMotorData = async() => {
+  // const getMotorData = async() => {
     // console.log("getMotorData called");
     // axios
     //   .post(motorApi)
@@ -79,7 +79,7 @@ const MotorDetail = () => {
     //     console.log("API Error:", err);
     //     setError("An error occurred while fetching data");
     //   });
-  };
+  // };
 
   // console.log("Motor Data:", motorData);
 
@@ -118,7 +118,6 @@ const MotorDetail = () => {
       </table>
       <div className="dashboard">
         <PieChartComponent className="chart" data={motorData} dataKey="temperature" />
-        <PieChartComponent className="chart" data={motorData} dataKey="rpm" />
         <BarChartComponent className="chart" data={motorData} dataKey="current" />
         <BarChartComponent className="chart" data={motorData} dataKey="voltage" />
         <LineChartComponent className="chart vibration" data={motorData} dataKey="vibration" />

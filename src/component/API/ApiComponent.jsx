@@ -91,3 +91,5 @@ export function ApiData({ endpoint, method, headers, body }){
 
   return data;
 }
+
+export const baseApi = 'http://127.0.0.1:8000';
