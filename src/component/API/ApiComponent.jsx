@@ -1,95 +1,66 @@
 import React, { useState, useEffect } from 'react';
 
-function ApiComponent({ endpoint, method, headers, body }) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(endpoint, {
-          method: method,
-          headers: headers,
-          body: body ? JSON.stringify(body) : null
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const responseData = await response.json();
-        setData(responseData);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [endpoint, method, headers, body]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  return ( // Return type >> tag <div>
-    <div>
-      {data && (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      )}
-    </div>
-  );
-}
-
-export default ApiComponent;
-
-export function ApiData({ endpoint, method, headers, body }){
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(endpoint, {
-          method: method,
-          headers: headers,
-          body: body ? JSON.stringify(body) : null
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const responseData = await response.json();
-        setData(responseData);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [10000]);
-
-  if (loading) {
-    return {"status": "Loading..."};
-  }
-
-  if (error) {
-    return {"status": {error}}
-  }
-
-  return data;
-}
-
 export const baseApi = 'http://127.0.0.1:8000';
+
+export const getMotorData = async(id) => {
+  const motorApi = `${baseApi}/devices/get/motor_data`;
+  const reqOption = {
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        motor_id: id
+    })
+  };
+  try{
+    const res = await fetch(motorApi, reqOption);
+    if(res.ok){
+      const data = await res.json();
+      console.log(data)
+      return data
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+};
+
+export const getMotorInfo = async(id) => {
+  const motorApi = `${baseApi}/devices/motor/find`;
+  const reqOption = {
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        motor_id: id
+    })
+  };
+  try{
+    const res = await fetch(motorApi, reqOption);
+    if(res.ok){
+      const data = await res.json();
+      console.log(data)
+      return data
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+};
+
+export const getRecords = async() => {
+  const motorApi = `${baseApi}/devices/records`;
+  const reqOption = {
+    method: 'GET',
+    headers:{'Content-Type': 'application/json'}
+  };
+  try{
+    const res = await fetch(motorApi, reqOption);
+    if(res.ok){
+      const data = await res.json();
+      console.log(data)
+      return data
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+};

@@ -15,11 +15,12 @@ body{
     align-items: center;
     border-radius: 10px;
     
-  }
+}
 
 .dashboard-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
   height: 100%;
@@ -27,19 +28,19 @@ body{
   margin-bottom: 10px;
 }
   
-  .dashboard .chart {
-    flex: 0 0 calc(50% - 1rem); 
-    max-width: calc(50% - 1rem); 
-    margin: 0.5rem;
-  }
-  
-  .dashboard .chart.vibration {
-    flex: 0 0 100%;
-    max-width: 100%;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-  }
+.dashboard .chart {
+  flex: 0 0 calc(50% - 1rem); 
+  max-width: calc(50% - 1rem); 
+  margin: 0.5rem;
+}
+    
+.dashboard .chart.vibration {
+  flex: 0 0 calc(50% - 1rem);
+  max-width: calc(50% - 1rem);
+  /* display: flex;  */
+  justify-content: center; 
+  align-items: center;
+}
 
 
 .pie-data{
