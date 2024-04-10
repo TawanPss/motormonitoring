@@ -11,7 +11,7 @@ import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
 import Feature from "./Page/Feature/Feature.jsx";
 import Myaccount from "./Page/MyaccountPage/Myaccount.jsx";
 import NewMotor from "./Page/Admin_NewMotorPage/NewMotorPage.jsx";
-import MotorPage from "./Page/MotorPage/Motorpage.jsx";
+import MotorPage from "./Page/MotorPage/MotorPage.jsx";
 import CreateMotor from "./Page/CRUD/Create.jsx";
 import ShowMotor from "./Page/CRUD/Showmotor.jsx";
 import ShowSingle from "./Page/CRUD/ShowSingle.jsx";
