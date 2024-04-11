@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import "./Record.css";
 
@@ -33,27 +34,6 @@ export default function Record() {
       });
   };
 
-  const downloadCSV = (motorId) => {
-    const motor = motorRecords.find((m) => m.motor_id === motorId);
-    if (motor && motor.motor_details && motor.motor_details.sensors) {
-      const csvData = convertToCSV(motor.motor_details.sensors);
-      const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute("download", `${motorId}_data.csv`);
-      link.style.visibility = "hidden";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
-  const convertToCSV = (data) => {
-    const headers = Object.keys(data[0]);
-    const rows = data.map((obj) => Object.values(obj).join(","));
-    return [headers.join(","), ...rows].join("\n");
-  };
-
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -70,9 +50,6 @@ export default function Record() {
         <div className="record-list-container">
           <div className="record-table-header">
             <div className="sub-record-box">
-              <p>File Name</p>
-            </div>
-            <div className="sub-record-box">
               <p>Motor ID</p>
             </div>
             <div className="sub-record-box">
@@ -83,22 +60,15 @@ export default function Record() {
           {motorRecords.map((motor) => (
             <div className="record-box" key={motor.motor_id}>
               <div className="sub-record-box">
-                <p>{`${motor.motor_id}_data.csv`}</p>
-              </div>
-              <div className="sub-record-box">
                 <p>{motor.motor_id}</p>
               </div>
               <div className="sub-record-box">
                 <p>{new Date().toLocaleDateString()}</p>
               </div>
               <div className="sub-record-box">
-                <button
-                  className="Download-button"
-                  onClick={() => downloadCSV(motor.motor_id)}
-                >
-                  Download
-                </button>
-                <button className="Delete-button">Delete</button>
+                <Link to={`/record/${motor.motor_id}`}>
+                  <button className="View-button">View</button>
+                </Link>
               </div>
             </div>
           ))}

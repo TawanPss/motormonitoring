@@ -7,6 +7,7 @@ import AboutUs from "./Page/AboutUsPage/AboutUs.jsx";
 import Contact from "./Page/ContactPage/Contact.jsx";
 import Home from "./Page/Home/Home.jsx";
 import Record from "./Page/RecordPage/Record.jsx";
+import MotorRecord from "./Page/RecordPage/MotorRecord.jsx";
 import AllMotors from "./Page/AllmotorPage/AllMotors.jsx";
 import Feature from "./Page/Feature/Feature.jsx";
 import Myaccount from "./Page/MyaccountPage/Myaccount.jsx";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/all-motors" element={<AllMotors />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/record" element={<Record />}></Route>
+          <Route path="/record/:motorId" element={<MotorRecord />} />
           <Route path="/feature" element={<Feature />}></Route>
           <Route path="/profile" element={<Myaccount />}></Route>
           <Route path="/admin-new-motor" element={<NewMotor />}></Route>
