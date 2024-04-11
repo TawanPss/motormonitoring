@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 export const baseApi = 'http://127.0.0.1:8000';
 
 export const getMotorData = async(id) => {
@@ -46,11 +44,14 @@ export const getMotorInfo = async(id) => {
   }
 };
 
-export const getRecords = async() => {
+export const getRecords = async(motor_id) => {
   const motorApi = `${baseApi}/devices/records`;
   const reqOption = {
-    method: 'GET',
-    headers:{'Content-Type': 'application/json'}
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: {
+      motor_id: motor_id
+    }
   };
   try{
     const res = await fetch(motorApi, reqOption);
@@ -64,3 +65,23 @@ export const getRecords = async() => {
     console.log(err)
   }
 };
+
+export const addMotor = async(body) => {
+  const endpoint = `${baseApi}/devices/motor/add`;
+  const reqOption = {
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(body)
+  };
+  try{
+    const res = await fetch(endpoint, reqOption);
+    if(res.ok){
+      const data = await res.json();
+      console.log(data)
+      return data
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+}

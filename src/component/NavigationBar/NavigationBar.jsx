@@ -13,7 +13,9 @@ export default function NavigationBar() {
             <nav className="NavNavigate">
                 <ul className="ListNavigate">
                     <li>
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img src={logo} alt="logo" />
+                        </Link>
                     </li>
                     <li>
                         <Link to="/all-motors">ALL MOTORS</Link>

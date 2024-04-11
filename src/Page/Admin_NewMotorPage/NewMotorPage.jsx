@@ -1,5 +1,6 @@
-
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addMotor } from '../../component/API/ApiComponent';
 import NavigationBar from "../../component/NavigationBar/NavigationBar"
 import AdminNavigationBar from '../../component/NavigationBar/AdminNavigationBar';
 import './NewMotorPage.css';
@@ -7,18 +8,36 @@ import './NewMotorPage.css';
 
 export default function NewMotorPage() {
     const navigate = useNavigate();
+    const [motor_id, setMotorID] = useState(null);
+    const [motor_name, setMotorName] = useState(null);
+    const [department, setDepartment] = useState(null);
+    const [series, setSeries] = useState(null);
+    const [location, setLocation] = useState(null);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const motorName = event.target.elements['Motor-Name'].value;
-        const motorId = event.target.elements['Motor-ID'].value;
-        const department = event.target.elements['Department'].value;
-        const motorSeries = event.target.elements['Motor-Series'].value;
+        const fetchData = async() =>{
+            const body = {
+                motor_id: motor_id,
+                motor_name: motor_name,
+                location: location,
+                series: series,
+                department: department
+            }
+            try{
+                const data = await addMotor(body);
+                console.log(data);
+                navigate("/all-motors");
+            }catch(err){
+                console.log(err);
+            }
+        }
+        fetchData();
+        // const slug = `motor-page-${Date.now()}`;
 
-        const slug = `motor-page-${Date.now()}`;
-
-        navigate(`/motor-pages/${slug}`, { state: { motorName, motorId, department, motorSeries } });
+        // navigate(`/motor-pages/${slug}`, { state: { motorName, motorId, department, motorSeries } });
     };
 
     return (
@@ -29,21 +48,35 @@ export default function NewMotorPage() {
                     <h1>Add The New Motor</h1>
                     <div className="label-input">
                         <label className="label_Text">Motor Name</label>
-                        <input name="Motor-Name" id="Motor-Name" type="Text" placeholder="Motor name" className="input-form"></input>
+                        <input name="Motor-Name" id="Motor-Name" type="Text" placeholder="Motor name" className="input-form"
+                            onChange={(e) => setMotorName(e.target.value)}
+                        />
                     </div>
                     <div className="label-input">
                         <label className="label_Text">Motor ID</label>
-                        <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="input-form"></input>
+                        <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="input-form"
+                            onChange={(e) => setMotorID(e.target.value)}
+                        />
                     </div>
                     <div className="label-input">
                         <label className="label_Text">Department</label>
-                        <input name="Department" id="Department" type="Text" placeholder="Choose Department" className="input-form"></input>
+                        <input name="Department" id="Department" type="Text" placeholder="Choose Department" className="input-form"
+                            onChange={(e) => setDepartment(e.target.value)}
+                        />
                     </div>
                     <div className="label-input">
                         <label className="label_Text">Motor Series</label>
-                        <input name="Motor-Series" id="Motor-Series" type="Text" placeholder="Motor Series" className="input-form"></input>
+                        <input name="Motor-Series" id="Motor-Series" type="Text" placeholder="Motor Series" className="input-form"
+                            onChange={(e) => setSeries(e.target.value)}
+                        />
                     </div>
-                    <button className="submit-button" type="submit">Connect Motor</button>
+                    <div className="label-input">
+                        <label className="label_Text">Location</label>
+                        <input name="Location" id="Location" type="Text" placeholder="Location" className="input-form"
+                            onChange={(e) => setLocation(e.target.value)}
+                        />
+                    </div>
+                    <button className="submit-button" type="submit">Add Motor</button>
                 </form>
             </div>
         </>

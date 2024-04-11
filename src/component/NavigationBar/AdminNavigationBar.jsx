@@ -2,7 +2,6 @@ import { GoSignOut } from "react-icons/go";
 import { Link } from "react-router-dom";
 import logo from "./logoV1.png";
 import './NavigationBar.css';
-import { useState } from 'react';
 
 export default function AdminNavigationBar() {
 
@@ -11,7 +10,15 @@ export default function AdminNavigationBar() {
             <nav className="NavNavigate">
                 <ul className="ListNavigate">
                     <li>
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img src={logo} alt="logo" />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/admin-all-motors">All motors</Link>
+                    </li>
+                    <li>
+                        <Link to="/admin-new-motor">New motor</Link>
                     </li>
                     <li>
                         <Link to="/admin-customer-list">Customer List</Link>

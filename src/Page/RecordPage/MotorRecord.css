@@ -1,10 +1,10 @@
-.record-Header{
+.motor-record-header {
     align-self: flex-start;
-    margin-bottom:40px ;
+    margin-bottom: 40px;
     margin-left: 40px;
-}
-
-.record-container{
+  }
+  
+  .motor-record-container {
     margin-top: 10%;
     width: 100%;
     display: flex;
@@ -15,9 +15,9 @@
     height: 100%;
     margin: 0;
     padding-top: 5%;
-}
-
-.record-list-container{
+  }
+  
+  .motor-record-list-container {
     background: #fff;
     color: #000000;
     width: 90%;
@@ -30,54 +30,47 @@
     align-items: center;
     justify-items: center;
     border-radius: 30px;
-}
-
-.record-box{
+  }
+  
+  .motor-record-box {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-around ;
+    justify-content: space-around;
     width: 100%;
     color: #000;
     margin-top: 10px;
     border: solid #ACACAC 2px;
-    border-radius: 10px; 
+    border-radius: 10px;
     padding: 20px;
-}
-
-.record-table-header{
+  }
+  
+  .motor-record-table-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-around ;
+    justify-content: space-around;
     width: 100%;
     color: #000;
     margin-top: 10px;
     margin-bottom: 20px;
     font-weight: bold;
     font-size: large;
-}
-
-.sub-record-box{
+  }
+  
+  .sub-motor-record-box {
     width: 20%;
-    justify-items:center ;
+    justify-items: center;
     align-items: center;
     text-align: center;
-}
-
-.View-button{
+  }
+  
+  .Download-button {
     padding: 5px;
     border-radius: 8px;
     background-color: #5DC8BE;
     color: white;
     border: solid #ACACAC 0px;
     margin-right: 40px;
-}
-
-.Delete-button{
-    padding: 5px;
-    border-radius: 8px;
-    background-color: #FF5050;
-    color: white;
-    border: solid #ACACAC 0px;
-}
+  }
+  

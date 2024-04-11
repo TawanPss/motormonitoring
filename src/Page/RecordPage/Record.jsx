@@ -5,21 +5,35 @@ import "./Record.css"
 
 
 export default function Record(){
-    const [records, setRecords] = useState(null);
+    const [motors, setMotors] = useState([]);
 
     useEffect(() => {
-        console.log("useEffect called");
-        async function fetchData(){
-            try{
-                const data = await getRecords();
-                setRecords(data.msg);
+        getUser();
+      }, []);
+      
+      const getUser = async () => {
+        try{
+          setIsLoading(true);
+          const token = getCookie('token');
+          console.log(token);
+          const reqOption = {
+            method: "POST",
+            headers:{
+              'Authorization': `Bearer ${token}`
             }
-            catch(err){
-                console.log(err);
-            } 
+          };
+          const res = await fetch(userApi,reqOption);
+          if(res.ok){
+            const data = await res.json()
+            console.log(data);
+            setMotors(data);
+            setIsLoading(false);
+          }
+        }catch(err){
+          setError(err);
+          console.log(err);
         }
-        fetchData()
-    }, []); 
+      }
 
     return(<>
     <NavigationBar />
@@ -28,9 +42,6 @@ export default function Record(){
         <h1 className="record-Header">Record</h1>
         <div className="record-list-container">
             <div className="record-table-header">
-                <div className="sub-record-box">
-                    <p>File Name</p>
-                </div>
                 <div className="sub-record-box">
                     <p>Motor ID</p>
                 </div>
@@ -41,21 +52,22 @@ export default function Record(){
                     
                 </div>      
             </div>
-            {records?.map((record) => (
-                <div key={record.motor_id} className="record-box">
+            {motors.motor_owned?.map((motor) => (
+                <div key={motor.motor_id} className="record-box">
                     <div className="sub-record-box">
-                        <p>{record.motor_name}</p>
+                        <p>{motor.motor_name}</p>
                     </div>
                     <div className="sub-record-box">
-                        <p>{record.motor_id}</p>
+                        <p>{motor.motor_id}</p>
                     </div>
                     <div className="sub-record-box">
-                        <p>{record.create_on}</p>
+                        <p>{new Date().toLocaleDateString()}</p>
                     </div>
                     <div className="sub-record-box">
-                        <button className="Download-button">Download</button>
-                        <button className="Delete-button">Delete</button>
-                    </div>  
+                        <Link to={`/record/${motor.motor_id}`}>
+                            <button className="View-button">View</button>
+                        </Link>
+                    </div>
                 </div>
             ))}
             

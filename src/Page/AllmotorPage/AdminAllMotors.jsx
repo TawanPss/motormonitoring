@@ -1,15 +1,28 @@
-import NavigationBar from "../../component/NavigationBar/NavigationBar";
-import './AllMotors.css'
-import { Link  , useNavigate} from 'react-router-dom';
-import React, { useState } from 'react';
+import AdminNavigationBar from '../../component/NavigationBar/AdminNavigationBar';
+import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
+import { getAllMotors } from '../../component/API/AdminUtils';
+import './AllMotors.css'
+import { FaS } from 'react-icons/fa6';
 
-export default function AllMotors(){
+export default function AdminAllMotors(){
+    const [motors, setMotors] = useState([]);
 
+    useEffect(() => {
+        async function fetchData(){
+            const data = await getAllMotors();
+            setMotors(data.data);
+        }
+        fetchData();
+    }, []);
+
+    const isMotorActive = (motor) => {
+        return motor != null ? true : false;
+    };
     
     return(
         <>
-            <NavigationBar/>
+            <AdminNavigationBar/>
             <div className="all-motors-container">
                 <h1 className="AllMotor-header">All Motors</h1>
                 <div className="motor-list-container">
@@ -48,6 +61,25 @@ export default function AllMotors(){
                             }
                         </Popup>   
                     </div>
+                    {motors?.map((motor) => (
+                        <div key={motor.motor_id} className="motor-box">
+                            <div className="sub-motor-box">
+                                <p>Motor ID: {motor.motor_id}</p>
+                            </div>
+                            <div className="sub-motor-box">
+                                <p>Sensor ID: {motor.motor_id}</p>
+                            </div>
+                            <div className="sub-motor-box">
+                                <p>Production</p>
+                            </div>
+                            <div className="sub-motor-box">
+                            <p>{isMotorActive(motor) ? 'Active' : 'Inactive'}</p>
+                            </div>
+                            <button className="More-Detail-button" type="submit">
+                                <Link to={`/show-motor/${motor.motor_id}`}>More Detail</Link>
+                            </button>
+                        </div>
+                    ))}
                     <div className="motor-box">
                         <div className="sub-motor-box">
                             <p>ABCDEFGHIJ</p>

@@ -14,7 +14,6 @@ const ShowMotor = () => {
   
   useEffect(() => {
     getUser();
-    // getUserData();
   }, []);
   
   const getUser = async () => {

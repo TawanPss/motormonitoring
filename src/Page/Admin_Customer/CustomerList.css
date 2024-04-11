@@ -72,6 +72,10 @@
     text-align: center;
 }
 
+.btn:hover{
+    cursor: pointer;
+}
+
 .Add-Motor-button{
     border-radius: 8px;
     background-color: #51C28E;
