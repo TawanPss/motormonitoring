@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, redirect } from "react-router-dom";
 import { getCookie } from "../../component/API/Cookie";
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
@@ -20,7 +19,6 @@ const ShowMotor = () => {
     try{
       setIsLoading(true);
       const token = getCookie('token');
-      console.log(token);
       const reqOption = {
         method: "POST",
         headers:{
@@ -30,7 +28,6 @@ const ShowMotor = () => {
       const res = await fetch(userApi,reqOption);
       if(res.ok){
         const data = await res.json()
-        console.log(data);
         setUser(data);
         setIsLoading(false);
       }
@@ -133,10 +130,10 @@ const ShowMotor = () => {
           {user.motor_owned.map((motor) => (
             <div key={motor.motor_id} className="motor-box">
               <div className="sub-motor-box">
-                <p>Motor ID: {motor.motor_id}</p>
+                <p>{motor.motor_id}</p>
               </div>
               <div className="sub-motor-box">
-                <p>Sensor ID: {motor.motor_id}</p>
+                <p>{motor.motor_id}</p>
               </div>
               <div className="sub-motor-box">
                 <p>Production</p>

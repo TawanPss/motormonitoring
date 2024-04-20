@@ -75,7 +75,7 @@ export default function CustomerList(){
                 </div>     
             </div>
             {users?.map((user) => (
-                <div className="customer-box">
+                <div className="customer-box" key={user.user_id}>
                 <div className="sub-customer-box">
                     <p>{user.username}</p>
                 </div>
@@ -86,7 +86,7 @@ export default function CustomerList(){
                     <p>{user.motor_owned.length}</p>
                 </div>
                 <div className="sub-customer-box-2">
-                    <button className="motor-list-button"><Link className="Link-No-underline" to="/admin-customer-motor-list">Motor List</Link></button>
+                    <button className="motor-list-button"><Link to="/admin-customer-motor-list" className="Link-No-underline">Motor List</Link></button>
                     {/* <button className="Add-Motor-button"><Link className="Link-No-underline" to="/admin-new-motor">Add New Motor</Link></button> */}
                     <Popup trigger={<button className="btn Add-Motor-button">Add New Motor</button>} 
                             modal nested>
@@ -103,7 +103,7 @@ export default function CustomerList(){
                                             <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="Ctm-motorID-input"
                                                 onChange={(e) => setMotorID(e.target.value)}
                                             />
-                                            <button className="btn Add-Motor-button" onClick={handleAddMotor(user.user_id)}>Add Motor</button>
+                                            <button className="btn Add-Motor-button" onClick={() => handleAddMotor(user.user_id)}>Add Motor</button>
                                         </div>
                                         
                                     </div>
@@ -126,7 +126,7 @@ export default function CustomerList(){
                                             <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="Ctm-motorID-input"
                                                 onChange={(e) => setMotorID(e.target.value)}
                                             />
-                                            <button className="btn Ctm-modal-delete-button" onClick={handleDeleteMotor(user.user_id)}>Delete Motor</button>
+                                            <button className="btn Ctm-modal-delete-button" onClick={() => handleDeleteMotor(user.user_id)}>Delete Motor</button>
                                         </div>
                                         
                                     </div>
@@ -165,7 +165,7 @@ export default function CustomerList(){
                                             <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="Ctm-motorID-input"
                                                 onChange={(e) => setMotorID(e.target.value)}
                                             />
-                                            <button className="btn Add-Motor-button" onClick={handleAddMotor()}>Add Motor</button>
+                                            <button className="btn Add-Motor-button" onClick={() => handleAddMotor()}>Add Motor</button>
                                         </div>
                                         
                                     </div>
@@ -188,7 +188,7 @@ export default function CustomerList(){
                                             <input name="Motor-ID" id="Motor-ID" type="Text" placeholder="Motor ID" className="Ctm-motorID-input"
                                                 onChange={(e) => setMotorID(e.target.value)}
                                             />
-                                            <button className="btn Ctm-modal-delete-button" onClick={handleDeleteMotor}>Delete Motor</button>
+                                            <button className="btn Ctm-modal-delete-button" onClick={() => handleDeleteMotor}>Delete Motor</button>
                                         </div>
                                         
                                     </div>

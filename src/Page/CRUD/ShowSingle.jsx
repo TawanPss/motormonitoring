@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PieChartComponent, LineChartComponent, BarChartComponent } from "./Graph.jsx";
 import NavigationBar from "../../component/NavigationBar/NavigationBar.jsx";
-import { getMotorData, getMotorInfo } from "../../component/API/ApiComponent.jsx";
+import { getMotorData, getMotorInfo, getLastData } from "../../component/API/ApiComponent.jsx";
 import './Graph.css';
 
 const MotorDetail = () => {
@@ -15,8 +15,8 @@ const MotorDetail = () => {
     if (id) { // Update the condition to check for 'id'
       async function fetchData(){
         try{
-          const data = await getMotorData(id);
-          setMotorData(data.data);
+          // const data = await getMotorData(id);
+          // setMotorData(data.data);
           const info = await getMotorInfo(id);
           setMotorInfo(info);
         }catch(err){
@@ -28,8 +28,34 @@ const MotorDetail = () => {
       console.log("Motor ID not provided");
       setError("Motor ID not provided");
     }
-  }, []); // Update the dependency to 'id'
+  }, [id]); // Update the dependency to 'id'
 
+  
+  async function getData(){
+    try{
+      const data = await getLastData(id);
+      setMotorData((prevData) => {
+        const newData = [...prevData, data.msg];
+        if(newData.length > 10){ // Max length = 10 and FIFO
+          const updateData = newData.slice(-10);
+          return updateData;
+        }
+        return newData;
+      });
+      console.log(data)
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getData();
+      console.log("getData is working...");
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+  
   // const getMotorData = async() => {
     // console.log("getMotorData called");
     // axios

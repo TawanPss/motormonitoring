@@ -96,8 +96,12 @@
 }
 
 .current-profile-box{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    'profile-email profile-name'
+    'profile-email profile-name'
+    ;
+  /* flex-direction: column; */
   width: 60%;
   padding: 20px;
   align-items: center;
@@ -111,4 +115,8 @@
 .form-text-label{
   margin-top: 10px;
   margin-left: 25%;
+}
+
+.row{
+  display: flex;
 }

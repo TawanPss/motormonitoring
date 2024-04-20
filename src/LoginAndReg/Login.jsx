@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './LoginAndReg.css';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
+import { UserContext } from '../App';
+import './LoginAndReg.css';
 
 
 export default function Login() {
@@ -8,6 +9,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [data, setData] = useState([]);
+    const userRole = useContext(UserContext);
     const endpoint = `api/users/login`;
     const reqOption = {
         method: 'POST',
@@ -23,8 +25,12 @@ export default function Login() {
         const res = await fetch(endpoint, reqOption);
         if(res.ok){
             // console.log(res.data);
-            setData(res.data);
-            navigate("/all-motors")
+            if(userRole == "customer"){
+                navigate("/all-motors");
+            }
+            if(userRole == "admin"){
+                navigate("/admin-all-motors");
+            }
         }
     
     }
@@ -34,13 +40,13 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error('Error fetching data:', error));
-      console.log(data.message)
+    //   console.log(data.message)
     }, []);
 
     return(
         <>
         <div className="container">
-            <h1>{data.message}</h1>
+            {/* <h1>{data.message}</h1> */}
             <h2 className="component-header">Sign in</h2>
             <form onSubmit={(e) => handleSubmit(e)} className='loginForm'>
                 <div className='inputContainner'>

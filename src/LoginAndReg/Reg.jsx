@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios"; 
+import { register_n } from "../component/API/UserUtils";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [error, setError] = useState(null);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/register", {
-                username,
-                email,
-                password,
-            });
-            console.log(response.data); 
+            const body = {
+                username: username,
+                email: email,
+                passwd: password
+            }
+            const data = await register_n(body);
+            navigate("/sign-in");
         } catch (error) {
             console.error("Registration failed:", error.response.data);
             setError("Registration failed. Please try again."); 

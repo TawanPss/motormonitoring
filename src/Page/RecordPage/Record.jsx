@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NavigationBar from "../../component/NavigationBar/NavigationBar"
-import { getRecords } from "../../component/API/ApiComponent"
+import { getUserData } from "../../component/API/UserUtils";
 import "./Record.css"
 
 
 export default function Record(){
     const [motors, setMotors] = useState([]);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         getUser();
@@ -14,21 +17,8 @@ export default function Record(){
       const getUser = async () => {
         try{
           setIsLoading(true);
-          const token = getCookie('token');
-          console.log(token);
-          const reqOption = {
-            method: "POST",
-            headers:{
-              'Authorization': `Bearer ${token}`
-            }
-          };
-          const res = await fetch(userApi,reqOption);
-          if(res.ok){
-            const data = await res.json()
-            console.log(data);
-            setMotors(data);
-            setIsLoading(false);
-          }
+          const user = await getUserData();
+          setMotors(user.motor_owned)
         }catch(err){
           setError(err);
           console.log(err);
@@ -52,11 +42,9 @@ export default function Record(){
                     
                 </div>      
             </div>
-            {motors.motor_owned?.map((motor) => (
+            {motors?.map((motor) => (
                 <div key={motor.motor_id} className="record-box">
-                    <div className="sub-record-box">
-                        <p>{motor.motor_name}</p>
-                    </div>
+                    
                     <div className="sub-record-box">
                         <p>{motor.motor_id}</p>
                     </div>
@@ -65,7 +53,7 @@ export default function Record(){
                     </div>
                     <div className="sub-record-box">
                         <Link to={`/record/${motor.motor_id}`}>
-                            <button className="View-button">View</button>
+                            <button className="btn View-button">View</button>
                         </Link>
                     </div>
                 </div>

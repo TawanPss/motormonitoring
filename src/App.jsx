@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect, useContext, createContext } from "react";
 import Login from "./LoginAndReg/Login.jsx";
 import Register from "./LoginAndReg/Reg.jsx";
 import "./index.css";
@@ -19,26 +20,43 @@ import PrivateRoute from "./LoginAndReg/PrivateRoute.jsx";
 import ShowSingleMockup from "./Page/CRUD/ShowSingleMockup.jsx";
 import MotorRecord from "./Page/RecordPage/MotorRecord.jsx";
 import AdminAllMotors from "./Page/AllmotorPage/AdminAllMotors.jsx";
+import { getCookie } from "./component/API/Cookie.jsx";
+
+export const UserContext = createContext();
 
 function App() {
-  const isAuthen = async() => {
-    const isAuthUrl = `api/users/is_authen`;
-    const reqAuth = {
-      method: 'GET',
-      headers:{'Content-Type': 'application/json'},
-    }
-    try{
+  const [isAuthen, setIsAuthen] = useState(false);
+  const [userRole, setRole] = useState(null);
+  const isAuthUrl = `api/users/get/user_data`;
+  
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = getCookie('token');
+      const reqAuth = {
+        method: 'POST',
+        headers:{
+          'Authorization': `Bearer ${token}`
+        }
+      };
 
-      const response = await fetch(isAuthUrl,reqAuth);
-      if(response.ok){
-        const msg = await response.json();
-        return msg.isAuthen;
+      try {
+        const response = await fetch(isAuthUrl, reqAuth);
+        if (response.ok) {
+          const msg = await response.json();
+          setRole(msg.role);
+          // setIsAuthen(true);
+        }
+        else{
+          setRole(null);
+          // setIsAuthen(false);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    }
-    catch(err){
-      console.error(err);
-    }
-  }
+    };
+
+    checkAuth();
+  }, []);
 
 
   return (
@@ -48,7 +66,12 @@ function App() {
           <Route path="/" element={<Landing />}></Route>
           <Route path="/about-us" element={<AboutUs />}></Route>
           <Route path="/contact-us" element={<Contact />}></Route>
-          <Route path="/sign-in" element={<Login />}></Route>
+          <Route path="/sign-in" element={
+            <UserContext.Provider value={userRole}>
+              <Login />
+            </UserContext.Provider>
+            }
+          />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/record" element={<Record />}></Route>
@@ -58,17 +81,27 @@ function App() {
           <Route path="/motor-" element={<CreateMotor />}></Route>
           <Route path="/show-motor" element={<ShowMotor />}></Route>
           <Route path="/show-motor/:id" element={<ShowSingle />} />
-          <Route path="/admin-all-motors" element={<AdminAllMotors />}></Route>
-          <Route path="/admin-new-motor" element={<NewMotor />}></Route>
-          <Route path="/admin-customer-list" element={<CustomerList/>}></Route>
-          <Route path="/admin-customer-motor-list" element={<CustomerMotorList/>}></Route>
           <Route path="/show-motor-mockup" element={<ShowSingleMockup/>}></Route>
           <Route path="/all-motors" element={
-              <PrivateRoute isAuthen={isAuthen} >
+            <PrivateRoute userRole={userRole} role={'customer'}>
                 <ShowMotor />
               </PrivateRoute>
-            }>
-          </Route>
+            }
+          />
+          <Route path="/admin-all-motors" element={
+            <PrivateRoute userRole={userRole} role={"admin"}>
+              <AdminAllMotors />
+            </PrivateRoute>
+            }
+          />
+          <Route path="/admin-new-motor" element={
+            <PrivateRoute userRole={userRole} role={"admin"}>
+              <NewMotor />
+            </PrivateRoute>
+            }
+          />
+          <Route path="/admin-customer-list" element={<CustomerList/>}></Route>
+          <Route path="/admin-customer-motor-list" element={<CustomerMotorList/>}></Route>
           <Route path="*" element={<p>Error 404 Not Found ...</p>} />
         </Routes>
       </BrowserRouter>

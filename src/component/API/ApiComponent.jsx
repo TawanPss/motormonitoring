@@ -22,6 +22,28 @@ export const getMotorData = async(id) => {
   }
 };
 
+export const getLastData = async(id) => {
+  const motorApi = `${baseApi}/devices/get/last_data`;
+  const reqOption = {
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        motor_id: id
+    })
+  };
+  try{
+    const res = await fetch(motorApi, reqOption);
+    if(res.ok){
+      const data = await res.json();
+      // console.log(data)
+      return data
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
 export const getMotorInfo = async(id) => {
   const motorApi = `${baseApi}/devices/motor/find`;
   const reqOption = {
@@ -49,9 +71,9 @@ export const getRecords = async(motor_id) => {
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
-    body: {
+    body: JSON.stringify({
       motor_id: motor_id
-    }
+    })
   };
   try{
     const res = await fetch(motorApi, reqOption);
@@ -84,4 +106,9 @@ export const addMotor = async(body) => {
   catch(err){
     console.log(err)
   }
+}
+
+export const logout = () => {
+  document.cookie = "token=;";
+  location.reload();
 }

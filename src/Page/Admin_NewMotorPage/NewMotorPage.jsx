@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addMotor } from '../../component/API/ApiComponent';
-import NavigationBar from "../../component/NavigationBar/NavigationBar"
+import { addNewMotor } from '../../component/API/AdminUtils';
 import AdminNavigationBar from '../../component/NavigationBar/AdminNavigationBar';
 import './NewMotorPage.css';
 
@@ -27,9 +26,9 @@ export default function NewMotorPage() {
                 department: department
             }
             try{
-                const data = await addMotor(body);
+                const data = await addNewMotor(body);
                 console.log(data);
-                navigate("/all-motors");
+                navigate("/admin-all-motors");
             }catch(err){
                 console.log(err);
             }

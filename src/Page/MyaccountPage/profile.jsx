@@ -64,8 +64,11 @@ export default function Profile() {
             </label>
           </div>
           <div className='current-profile-box'>
-            <h1 className="profile-name"><label>{user ? user.username : 'null'}</label> {name}</h1>
-            <p className="profile-email"><label>{user ? user.email : 'null'}</label> {email}</p>
+              <p className='profile-email'>Username: </p>
+              <h1 className="profile-name"><label>{user ? user.username : 'null'}</label> {name}</h1>
+              <p className='profile-email'>Email: </p>
+              <p className="profile-email"><label>{user ? user.email : 'null'}</label> {email}</p>
+            <p className='profile-email'>Role: </p>
             <p className="profile-phone"><label>{user ? user.role : 'null'}</label> {phone}</p>
           </div>
       </div>
