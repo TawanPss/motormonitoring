@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { register_n } from "../component/API/UserUtils";
 import { Link, useNavigate } from "react-router-dom";
+import { setUser } from "../slicers/userSlice";
+import { register } from "../component/APIs/UserAPIs";
+import { useSelector, useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -8,21 +11,42 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [error, setError] = useState(null);
+    const dispatch = useDispatch();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        try {
-            const body = {
-                username: username,
-                email: email,
-                passwd: password
-            }
-            const data = await register_n(body);
-            navigate("/sign-in");
-        } catch (error) {
-            console.error("Registration failed:", error.response.data);
-            setError("Registration failed. Please try again."); 
+        const body = {
+            username: username,
+            email: email,
+            passwd: password
         }
+        dispatch(register(body)).unwrap()
+        .then((data) => {
+            console.log(data);
+            // dispatch(setUser(data.user))
+            Swal.fire({
+                title: 'Registration Completed',
+                text: 'Ready to sign-in!.',
+                icon: "success",
+                confirmButtonText: 'OK'
+            });
+            navigate('/sign-in');
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: 'Registration Failed!',
+                text: 'Please try again later.',
+                icon: "error",
+                confirmButtonText: 'Okay'
+            });
+        })
+        // try {
+        //     const data = await register_n(body);
+        //     navigate("/sign-in");
+        // } catch (error) {
+        //     console.error("Registration failed:", error.response.data);
+        //     setError("Registration failed. Please try again."); 
+        // }
     };
 
     return (

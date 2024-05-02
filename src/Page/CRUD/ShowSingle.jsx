@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PieChartComponent, LineChartComponent, BarChartComponent } from "./Graph.jsx";
 import NavigationBar from "../../component/NavigationBar/NavigationBar.jsx";
-import { getMotorData, getMotorInfo, getLastData } from "../../component/API/ApiComponent.jsx";
+import { BarChartComponent, LineChartComponent, PieChartComponent } from "./Graph.jsx";
+import { getMotorData, getMotorInfo, getLastData } from "../../component/APIs/ApiComponent.jsx";
+import { addMotorDataById } from "../../slicers/userSlice.js";
+import { useSelector, useDispatch } from "react-redux";
 import './Graph.css';
+import Swal from "sweetalert2";
 
 const MotorDetail = () => {
   const [motorData, setMotorData] = useState([]);
   const [motorInfo, setMotorInfo] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams(); // Update the parameter name to 'id'
+  // const motorData = useSelector(state => state.user.motorData[id]);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log("useEffect called");
-    if (id) { // Update the condition to check for 'id'
-      async function fetchData(){
-        try{
-          // const data = await getMotorData(id);
-          // setMotorData(data.data);
-          const info = await getMotorInfo(id);
-          setMotorInfo(info);
-        }catch(err){
-          console.log(err);
-        }
+    async function fetchData(){
+      try{
+        // const data = await getMotorData(id);
+        // setMotorData(data.data);
+        const info = await getMotorInfo(id);
+        setMotorInfo(info);
+        getData();
+      }catch(err){
+        console.log(err);
       }
+    }
+    if (id) { // Update the condition to check for 'id'
       fetchData()
     } else {
       console.log("Motor ID not provided");
@@ -35,7 +42,7 @@ const MotorDetail = () => {
     try{
       const data = await getLastData(id);
       setMotorData((prevData) => {
-        const newData = [...prevData, data.msg];
+        const newData = [...prevData, data.data];
         if(newData.length > 10){ // Max length = 10 and FIFO
           const updateData = newData.slice(-10);
           return updateData;
@@ -47,6 +54,22 @@ const MotorDetail = () => {
       console.log(err);
     }
   }
+  // const getData = () => {
+  //   dispatch(getLastData({"motor_id": id})).unwrap()
+  //   .then((data) => {
+  //     console.log(data);
+  //     dispatch(addMotorDataById(data.data))
+  //     console.log(motorData);
+  //   })
+  //   .catch((err) => {
+  //     Swal.fire({
+  //       title: 'Getting Data Failed!',
+  //       text: 'Please try again later.',
+  //       icon: "error",
+  //       confirmButtonText: 'Okay'
+  //     });
+  //   })
+  // }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -135,7 +158,7 @@ const MotorDetail = () => {
           </tr>
         </thead>
         <tbody>
-          {motorData.map((sensor, index) => (
+          {motorData ? motorData.map((sensor, index) => (
             <tr key={index}>
               <td>{sensor.temperature}</td>
               <td>{sensor.vibration}</td>
@@ -143,7 +166,7 @@ const MotorDetail = () => {
               <td>{sensor.current}</td>
               <td>{sensor.timestamp}</td>
             </tr>
-          ))}
+          )): null}
         </tbody>
       </table>
     </div>

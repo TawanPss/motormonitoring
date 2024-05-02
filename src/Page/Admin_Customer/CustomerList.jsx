@@ -1,28 +1,47 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
-import { addMotorToCustomer, deleteMotorFromCustomer, getAllUsers } from "../../component/API/AdminUtils";
+import { Link, useNavigate } from "react-router-dom"
+import { addMotorToCustomer, deleteMotorFromCustomer, getAllUsers } from "../../component/APIs/AdminAPIs";
 import AdminNavigationBar from "../../component/NavigationBar/AdminNavigationBar";
+import { useDispatch } from "react-redux";
+import { getUserById } from "../../component/APIs/AdminAPIs";
+import { setCustomer } from "../../slicers/userSlice";
 import Popup from 'reactjs-popup';
+import Swal from "sweetalert2";
 import "./CustomerList.css"
 
 export default function CustomerList(){
     const [motor_id, setMotorID] = useState(null);
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleAddMotor = (user_id) => {
-        const fetchData = async() =>{
-            const body = {
-                user_id: user_id,
-                motor_id: motor_id
-            }
-            try{
-                const data = await addMotorToCustomer(body);
-                console.log(data);
-            }catch(err){
-                console.log(err);
-            }
+        const body = {
+            user_id: user_id,
+            motor_id: motor_id
         }
-        fetchData();
+        addMotorToCustomer(body)
+        .then((data) => {
+            Swal.fire({
+                title: 'Add motor success',
+                text: `${motor_id} has been added to user.`,
+                icon: 'success',
+                confirmButtonText: 'Okay'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    window.location.reload();
+                }
+            })
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: "Add motor Failed!",
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
+        })
+        
+    
     };
 
     const handleDeleteMotor = (user_id) => {
@@ -31,15 +50,48 @@ export default function CustomerList(){
                 user_id: user_id,
                 motor_id: motor_id
             }
-            try{
-                const data = await deleteMotorFromCustomer(body);
-                console.log(data);
-            }catch(err){
-                console.log(err);
-            }
+            deleteMotorFromCustomer(body)
+            .then((data) => {
+                Swal.fire({
+                    title: 'Delete success',
+                    icon: 'success',
+                    text: `${motor_id} has been removed.`,
+                    confirmButtonText: 'Okay'
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.location.reload();
+                    }
+                })
+            })
+            .catch((err) => {
+                Swal.fire({
+                    title: "Delete motor Failed!",
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
+            })
         }
         fetchData();
     };
+
+    const handleMotorList = (id) => {
+        const body = {
+            user_id: id
+        }
+        dispatch(getUserById(body)).unwrap()
+        .then((data) => {
+            console.log(data)
+            dispatch(setCustomer(data.user))
+            navigate('/admin-customer-motor-list')
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: err,
+                icon: 'error'
+            })
+        })
+
+    }
 
     useEffect(() => {
         async function getUsers(){
@@ -86,9 +138,9 @@ export default function CustomerList(){
                     <p>{user.motor_owned.length}</p>
                 </div>
                 <div className="sub-customer-box-2">
-                    <button className="motor-list-button"><Link to="/admin-customer-motor-list" className="Link-No-underline">Motor List</Link></button>
+                    <button className="motor-list-button btn" onClick={() => handleMotorList(user.user_id)}>Motor List</button>
                     {/* <button className="Add-Motor-button"><Link className="Link-No-underline" to="/admin-new-motor">Add New Motor</Link></button> */}
-                    <Popup trigger={<button className="btn Add-Motor-button">Add New Motor</button>} 
+                    <Popup trigger={<button className="btn Add-Motor-button">Add Motor</button>} 
                             modal nested>
                             {
                                 close => (

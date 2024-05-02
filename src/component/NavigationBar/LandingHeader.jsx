@@ -8,22 +8,22 @@ export default function LandingHeader() {
   return (
     <>
       <nav className="landing-header">
-        <ScrollLink to="landing" smooth={true} duration={500}>
+        <ScrollLink to="landing" smooth={true} duration={500} className="btn">
           <img src={logo} />
         </ScrollLink>
         <ul>
           <li>
-            <ScrollLink to="about" smooth={true} duration={500}>
+            <ScrollLink to="about" smooth={true} duration={500} className="btn">
               ABOUT
             </ScrollLink>
           </li>
           <li>
-            <ScrollLink to="feature" smooth={true} duration={500}>
+            <ScrollLink to="feature" smooth={true} duration={500} className="btn">
               FEATURE
             </ScrollLink>
           </li>
           <li>
-            <ScrollLink to="contact" smooth={true} duration={500}>
+            <ScrollLink to="contact" smooth={true} duration={500} className="btn">
               CONTACT
             </ScrollLink>
           </li>

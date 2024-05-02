@@ -1,7 +1,10 @@
-import { baseApi } from "./ApiComponent";
+import { baseUrl } from "./ApiComponent";
+import { getToken } from "./Cookie";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const addMotorToCustomer = async(body) => {
-    const endpoint = `${baseApi}/admin/add_motor`;
+    const endpoint = `${baseUrl}/admin/add_motor`;
     const reqOption = {
       method: 'POST',
       headers:{'Content-Type': 'application/json'},
@@ -21,7 +24,7 @@ export const addMotorToCustomer = async(body) => {
 }
   
 export const deleteMotorFromCustomer = async(body) => {
-  const endpoint = `${baseApi}/admin/delete_motor`;
+  const endpoint = `${baseUrl}/admin/delete_motor`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -31,7 +34,6 @@ export const deleteMotorFromCustomer = async(body) => {
     const res = await fetch(endpoint, reqOption);
     if(res.ok){
       const data = await res.json();
-      console.log(data)
       return data
     }
   }
@@ -41,7 +43,7 @@ export const deleteMotorFromCustomer = async(body) => {
 }
 
 export const getAllUsers = async() => {
-    const endpoint = `${baseApi}/admin/get_users`;
+    const endpoint = `${baseUrl}/admin/get_users`;
     const reqOption = {
         method: 'GET',
     };
@@ -59,7 +61,7 @@ export const getAllUsers = async() => {
 }
 
 export const getAllMotors = async() => {
-    const endpoint = `${baseApi}/admin/get_motors`;
+    const endpoint = `${baseUrl}/admin/get_motors`;
     const reqOption = {
         method: 'GET',
     };
@@ -77,7 +79,7 @@ export const getAllMotors = async() => {
 }
 
 export const addNewMotor = async(body) => {
-  const endpoint = `${baseApi}/admin/add_new_motor`;
+  const endpoint = `${baseUrl}/admin/add_new_motor`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -94,3 +96,16 @@ export const addNewMotor = async(body) => {
     console.log(err);
   }
 }
+
+export const getUserById = createAsyncThunk(
+  '/admin/get/user_info',
+  async(body, thunkAPI) => {
+      const endpoint = `${baseUrl}/admin/get/user_info`;
+      try{
+          const response = await axios.post(endpoint, body);
+          return await response.data;
+      }catch(err){
+          return thunkAPI.rejectWithValue({error: err.message});
+      }
+  }
+)

@@ -1,4 +1,4 @@
-import Feature_pic from "./Featurepic.png";
+import Feature_pic from "./featurepic.png";
 import Health_monitor from "./image1.png";
 import Output_tracking from "./image2.png";
 import Downtime from "./image3.png";

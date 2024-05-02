@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRecords } from "../../component/API/ApiComponent";
+import { getRecords } from "../../component/APIs/ApiComponent";
 import { useParams } from "react-router-dom";
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import "./MotorRecord.css";

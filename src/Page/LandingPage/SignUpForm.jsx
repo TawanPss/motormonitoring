@@ -9,7 +9,9 @@ export default function SignupForm() {
         </div>
       <div className="signup-container">
       <input type="email" className="signup-input" placeholder="Insert email address"/>
-      <button type="submit" className="signup-button"><Link className="Link-No-underline" to={'/register'}>Sign Up</Link></button>
+      <Link className="Link-No-underline" to={'/register'}>
+        <button type="button" className="btn signup-button">Sign Up</button>
+      </Link>
       </div>
     </>
   );

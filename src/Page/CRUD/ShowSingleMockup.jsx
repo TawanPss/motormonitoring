@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PieChartComponent, LineChartComponent, BarChartComponent } from "./Graph.jsx";
 import NavigationBar from "../../component/NavigationBar/NavigationBar.jsx";
-import { baseApi } from "../../component/API/ApiComponent.jsx";
 import './Graph.css';
 
 export default function ShowSingleMockup(){

@@ -1,7 +1,9 @@
-export const baseApi = 'http://127.0.0.1:8000';
+export const baseUrl = 'http://127.0.0.1:8000';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const getMotorData = async(id) => {
-  const motorApi = `${baseApi}/devices/get/motor_data`;
+  const motorApi = `${baseUrl}/devices/get/motor_data`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -22,8 +24,21 @@ export const getMotorData = async(id) => {
   }
 };
 
+// export const getLastData = createAsyncThunk(
+//   '/devices/get/last_data',
+//   async(body, thunkAPI) => {
+//     const endpoint = `${baseUrl}/devices/get/last_data`;
+//     try{
+//       const response = await axios.post(endpoint, body);
+//       return await response.data;
+//     }catch(err){
+//       return thunkAPI.rejectWithValue({error: err.message});
+//     }
+//   }
+// )
+
 export const getLastData = async(id) => {
-  const motorApi = `${baseApi}/devices/get/last_data`;
+  const motorApi = `${baseUrl}/devices/get/last_data`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -45,7 +60,7 @@ export const getLastData = async(id) => {
 }
 
 export const getMotorInfo = async(id) => {
-  const motorApi = `${baseApi}/devices/motor/find`;
+  const motorApi = `${baseUrl}/devices/motor/find`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -67,7 +82,7 @@ export const getMotorInfo = async(id) => {
 };
 
 export const getRecords = async(motor_id) => {
-  const motorApi = `${baseApi}/devices/records`;
+  const motorApi = `${baseUrl}/devices/records`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -89,7 +104,7 @@ export const getRecords = async(motor_id) => {
 };
 
 export const addMotor = async(body) => {
-  const endpoint = `${baseApi}/devices/motor/add`;
+  const endpoint = `${baseUrl}/devices/motor/add`;
   const reqOption = {
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -110,5 +125,5 @@ export const addMotor = async(body) => {
 
 export const logout = () => {
   document.cookie = "token=;";
-  location.reload();
+  // location.reload();
 }

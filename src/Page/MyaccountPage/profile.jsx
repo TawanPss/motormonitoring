@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './profile.css';
-import { getCookie } from '../../component/API/Cookie';
+import { getCookie } from '../../component/APIs/Cookie';
 import { CgProfile } from "react-icons/cg";
+import { useSelector, useDispatch } from 'react-redux';
+import { userEditName, getUserData } from '../../component/APIs/UserAPIs';
+import { setUser } from '../../slicers/userSlice';
 const profilePic ="src/Page/MyaccountPage/nullprofile.png";
+import './profile.css';
+import Swal from 'sweetalert2';
+import { redirect } from 'react-router-dom';
 
 export default function Profile() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user.user)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -14,44 +20,67 @@ export default function Profile() {
   const emailInput = useRef();
   const phoneInput = useRef();
   const fileInput = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getUser()
   }, []);
 
-  const getUser = async() =>{
-    const userApi = `api/users/get/user_data`;
-    try{
-      const token = getCookie('token');
-      console.log(token);
-      const reqOption = {
-        method: "POST",
-        headers:{
-          'Authorization': `Bearer ${token}`
-        }
-      };
-      const res = await fetch(userApi,reqOption);
-      if(res.ok){
-        const data = await res.json()
-        console.log(data);
-        setUser(data);
-      }
-    }catch(err){
-      console.log(err);
-    }
-  };
-  
+  const getUser = () => {
+    dispatch(getUserData()).unwrap()
+    .then((data) => {
+      dispatch(setUser(data))
+
+    })
+    .catch((err) => {
+      Swal.fire({
+        title: 'Authorization Failed!',
+        text: 'Please sign-in again.',
+        icon: "error",
+        confirmButtonText: 'Okay'
+      });
+      navigate('/sign-in')
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setName(nameInput.current.value);
-    setEmail(emailInput.current.value);
-    setPhone(phoneInput.current.value);
-    if (fileInput.current.files[0]) {
-      setImage(URL.createObjectURL(fileInput.current.files[0]));
+    const body = {
+      username: name
     }
-    console.log({ name, email, phone, image });
+    dispatch(userEditName(body)).unwrap()
+    .then((data) => {
+      Swal.fire({
+        title: `${data.msg}`,
+        text: "Your name is updated.",
+        icon: "success",
+        confirmButtonText: "OK"
+      }).then((result) => {
+        if(result.isConfirmed){
+          window.location.reload()
+        }
+      })
+    })
+    .catch((err) => {
+      Swal.fire({
+        title: `${err}`,
+        text: "Please try again later.",
+        icon: "error",
+        confirmButtonText: "Okay"
+      });
+    })
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setName(nameInput.current.value);
+  //   setEmail(emailInput.current.value);
+  //   setPhone(phoneInput.current.value);
+  //   if (fileInput.current.files[0]) {
+  //     setImage(URL.createObjectURL(fileInput.current.files[0]));
+  //   }
+  //   console.log({ name, email, phone, image });
+  // };
 
   return (
     <div className="profile-container">
@@ -65,11 +94,11 @@ export default function Profile() {
           </div>
           <div className='current-profile-box'>
               <p className='profile-email'>Username: </p>
-              <h1 className="profile-name"><label>{user ? user.username : 'null'}</label> {name}</h1>
+              <h1 className="profile-name"><label>{user ? user.username : 'null'}</label> </h1>
               <p className='profile-email'>Email: </p>
-              <p className="profile-email"><label>{user ? user.email : 'null'}</label> {email}</p>
+              <p className="profile-email"><label>{user ? user.email : 'null'}</label> </p>
             <p className='profile-email'>Role: </p>
-            <p className="profile-phone"><label>{user ? user.role : 'null'}</label> {phone}</p>
+            <p className="profile-phone"><label>{user ? user.role : 'null'}</label> </p>
           </div>
       </div>
       <div className='lower-container'>
@@ -78,11 +107,11 @@ export default function Profile() {
         </div>
         <form onSubmit={handleSubmit} className="profile-form">
           <p className='form-text-label'>Edit Name</p>
-          <input ref={nameInput} type="text" placeholder="New name" className="profile-input"/>
-          <p className='form-text-label'>Change Email</p>
-          <input ref={emailInput} type="email" placeholder="New email" className="profile-input"/>
+          <input ref={nameInput} type="text" placeholder="New name" className="profile-input" onChange={(e) => setName(e.target.value)}/>
+          {/* <p className='form-text-label'>Change Email</p> */}
+          {/* <input ref={emailInput} type="email" placeholder="New email" className="profile-input"/>
           <p className='form-text-label'>Change Phone Number</p>
-          <input ref={phoneInput} type="tel" placeholder="New phone" pattern="[0-9]{10}" className="profile-input"/>
+          <input ref={phoneInput} type="tel" placeholder="New phone" pattern="[0-9]{10}" className="profile-input"/> */}
           <button type="submit" className="profile-submit">Submit Change</button>
         </form>
       </div>

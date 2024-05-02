@@ -1,66 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { Link, redirect } from "react-router-dom";
-import { getCookie } from "../../component/API/Cookie";
+import { getCookie } from "../../component/APIs/Cookie";
 import NavigationBar from "../../component/NavigationBar/NavigationBar";
 import Popup from 'reactjs-popup';
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, setMotorDataById } from "../../slicers/userSlice";
+import { getUserData, userAddMotor } from "../../component/APIs/UserAPIs";
+import Swal from "sweetalert2";
 
 const ShowMotor = () => {
-  const userApi = `api/users/get/user_data`;
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user.user)
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [motor_id, setMotorID] = useState(null);
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    getUser();
+    setIsLoading(true);
+    dispatch(getUserData()).unwrap()
+    .then((data) => {
+      setIsLoading(false);
+    })
+    .catch((err) => {
+      setIsLoading(false)
+      Swal.fire({
+        title: 'Authorization Failed!',
+        text: 'Please sign-in again.',
+        icon: "error",
+        confirmButtonText: 'Okay'
+      });
+      navigate('/sign-in')
+    })
+    // getUser();
   }, []);
   
-  const getUser = async () => {
-    try{
-      setIsLoading(true);
-      const token = getCookie('token');
-      const reqOption = {
-        method: "POST",
-        headers:{
-          'Authorization': `Bearer ${token}`
-        }
-      };
-      const res = await fetch(userApi,reqOption);
-      if(res.ok){
-        const data = await res.json()
-        setUser(data);
-        setIsLoading(false);
-      }
-    }catch(err){
-      setError(err);
-      console.log(err);
-    }
-  }
-
   const addMotor = async() => {
-    const token = getCookie('token');
-    const endpoint = `api/users/add/motor`;
-    const reqOption = {
-      method: "POST",
-      headers:{
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        motor_id: motor_id
-      })
-    };
-    try{
-      const res = await fetch(endpoint,reqOption);
-      if(res.ok){
-        const data = await res.json();
-        console.log(data);
-        redirect('/all-motors')
-      }
-    }
-    catch(err){
-      console.log(err)
-    }
+    dispatch(userAddMotor({"motor_id": motor_id})).unwrap()
+    .then((data) => {
+      console.log(data);
+      dispatch(setUser(data.user))
+      redirect('/all-motors')
+      Swal.fire({
+        title: 'Adding Motor Success!',
+        text: 'New motor added.',
+        icon: "success",
+        confirmButtonText: 'OK'
+      });
+    })
+    .catch((err) => {
+      Swal.fire({
+        title: 'Adding Motor Failed!',
+        text: 'Please try again later.',
+        icon: "error",
+        confirmButtonText: 'Okay'
+      });
+    })
   }
 
   const isMotorActive = (motor) => {
@@ -142,7 +139,7 @@ const ShowMotor = () => {
                 <p>{isMotorActive(motor) ? 'Active' : 'Inactive'}</p>
               </div>
               <button className="More-Detail-button" type="submit">
-                <Link to={`/show-motor/${motor.motor_id}`}>More Detail</Link>
+                <Link to={`/show-motor/${motor.motor_id}`} className="textDecNone">More Detail</Link>
               </button>
             </div>
           ))}

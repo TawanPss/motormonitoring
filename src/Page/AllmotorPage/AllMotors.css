@@ -41,6 +41,8 @@
 
 .Add-New-Motor-button{
     background-color: var(--accentColor);
+    text-decoration: none;
+    align-self: flex-end;
     color: #fff;
     font-size: medium;
     border: none;
@@ -85,7 +87,21 @@
     transition: 0.2s ease-in-out;
     cursor: pointer;
     background-color: #5DC8BE;
-    
+    /* background-color: gray; */
+}
+.Admin-More-Detail-button{
+    background-color: var(--accentColor);
+    color: #fff;
+    font-size: medium;
+    border: none;
+    border-radius: 15px;
+    width: 20%;
+    height: 45px;
+    margin-top: 0px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    /* background-color: #5DC8BE; */
+    background-color: gray;
 }
 
 .AllMotor-header{
@@ -161,4 +177,8 @@
     background-color: #51C28E;
     color: white;
     border: solid #ACACAC 0px;
+}
+
+.textDecNone{
+    text-decoration: none;
 }

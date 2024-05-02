@@ -1,29 +1,45 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavigationBar from "../../component/NavigationBar/NavigationBar"
-import { getUserData } from "../../component/API/UserUtils";
+import { getUserData } from "../../component/APIs/UserAPIs";
+import { useSelector, useDispatch } from "react-redux";
 import "./Record.css"
+import Swal from "sweetalert2";
 
 
 export default function Record(){
     const [motors, setMotors] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-
+    const user = useSelector((state) => state.user.user)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
     useEffect(() => {
         getUser();
       }, []);
       
       const getUser = async () => {
-        try{
+        
           setIsLoading(true);
-          const user = await getUserData();
-          setMotors(user.motor_owned)
-        }catch(err){
-          setError(err);
-          console.log(err);
-        }
-      }
+          dispatch(getUserData()).unwrap()
+          .then((data) => {
+              console.log(data)
+
+              setMotors(data.motor_owned)
+          })
+          .catch((err) => {
+            Swal.fire({
+                title: "Authentication Failed!",
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    navigate('/sign-in')
+                }
+            })
+          })
+    }
 
     return(<>
     <NavigationBar />
