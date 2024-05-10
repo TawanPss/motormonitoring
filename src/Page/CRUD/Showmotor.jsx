@@ -22,6 +22,7 @@ const ShowMotor = () => {
     setIsLoading(true);
     dispatch(getUserData()).unwrap()
     .then((data) => {
+      dispatch(setUser(data))
       setIsLoading(false);
     })
     .catch((err) => {
@@ -48,7 +49,11 @@ const ShowMotor = () => {
         text: 'New motor added.',
         icon: "success",
         confirmButtonText: 'OK'
-      });
+      }).then((result) => {
+        if(result.isConfirmed){
+          window.location.reload()
+        }
+      })
     })
     .catch((err) => {
       Swal.fire({
