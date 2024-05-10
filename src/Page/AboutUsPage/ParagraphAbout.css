@@ -1,0 +1,31 @@
+.para-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.para1, .para2 {
+    display: flex; 
+    align-items: center; 
+    margin: 40px ; 
+    gap: 10px; 
+    text-align: left;
+}
+
+.Paragraph-Header{
+    font-size: 40px;
+    align-self: center;
+    margin-top: 40px;
+}
+
+
+@media (max-width: 600px) {
+    .para-container {
+        max-width: 90%; 
+    }
+
+    .para1, .para2 {
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+}

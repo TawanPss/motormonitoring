@@ -1,0 +1,184 @@
+.all-motors-container {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #F3F3F3;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding-top: 5%;
+}
+.motor-list-container{
+    background: #fff;
+    color: #000000;
+    width: 90%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    border-radius: 30px;
+}
+
+.table-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around ;
+    width: 100%;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: large;
+
+}
+
+.Add-New-Motor-button{
+    background-color: var(--accentColor);
+    text-decoration: none;
+    align-self: flex-end;
+    color: #fff;
+    font-size: medium;
+    border: none;
+    border-radius: 15px;
+    width: 20%;
+    height: 45px;
+    margin-top: 0px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #51C28E;
+}
+
+.motor-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around ;
+    width: 100%;
+    color: #000;
+    margin-top: 10px;
+    border: solid #ACACAC 2px;
+    border-radius: 10px; 
+    padding: 20px;
+}
+
+.sub-motor-box{
+    width: 20%;
+    justify-items:center ;
+    align-items: center;
+    text-align: center;
+}
+
+.More-Detail-button{
+    background-color: var(--accentColor);
+    color: #fff;
+    font-size: medium;
+    border: none;
+    border-radius: 15px;
+    width: 20%;
+    height: 45px;
+    margin-top: 0px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #5DC8BE;
+    /* background-color: gray; */
+}
+.Admin-More-Detail-button{
+    background-color: var(--accentColor);
+    color: #fff;
+    font-size: medium;
+    border: none;
+    border-radius: 15px;
+    width: 20%;
+    height: 45px;
+    margin-top: 0px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    /* background-color: #5DC8BE; */
+    background-color: gray;
+}
+
+.AllMotor-header{
+    align-self: flex-start;
+    margin-bottom:40px ;
+    margin-left: 40px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    border-radius: 20px;
+    width: 390px;
+    height: 150px;
+    z-index: 999;
+    padding: 20px; 
+}
+
+.modal-content{
+    width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey */
+    z-index: 999; /* Ensure it's above other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motorID-input{
+    width: 97%;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    border: solid #ACACAC 1px;
+}
+
+.modal-header-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between ;
+}
+
+.Close-button{
+    padding: 0px;
+    color: black;
+    font-size: medium;
+    border: none;
+    border-radius: 0px;
+    background-color: #fefefe;
+}
+
+.modal-submit-button{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #51C28E;
+    color: white;
+    border: solid #ACACAC 0px;
+}
+
+.textDecNone{
+    text-decoration: none;
+}

@@ -1,0 +1,90 @@
+.ListNavigate {
+  padding: 10px; 
+  display: flex;
+  justify-content:left;
+  align-items: center;
+  gap: 2vw;
+}
+
+.ListNavigate-end{
+  padding: 10px; 
+  display: flex;
+  justify-self:right;
+  align-items: center;
+  gap: 2vw;
+}
+
+.ListNavigate li{
+  list-style: none;
+  gap: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.ListNavigate a{
+  text-decoration: none;
+  color: #fff; 
+}
+
+.ListNavigate ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.ListNavigate img {
+  width: 100px; 
+  height: auto; 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdown button {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  color: black;
+  background-color: grey;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.profile-pic{
+  width: 100px;
+  height: 100px;
+}
+
+.NavNavigate{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color:black;
+  justify-content: space-between;
+}
+
+.sign-out-button{
+  padding: 10px;
+  font-size: medium;
+  background-color: #FF5050;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  margin-right: 20px;
+}

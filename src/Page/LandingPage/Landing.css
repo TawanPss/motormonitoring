@@ -1,0 +1,14 @@
+.Landing-container {
+    
+    width: 100%; 
+    background: linear-gradient(to bottom,#000000 50%, #003d44);
+    color: white;
+}
+
+.custom-shape {
+    width: 0vw;
+    height: 20vh;
+    background-color: #2b5c57;
+    border-radius: 97% 67% 100% 76% / 92% 89% 83% 69%;
+    z-index: -1; /* Put the background behind the text content */
+  }

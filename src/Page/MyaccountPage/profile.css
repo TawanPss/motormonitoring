@@ -1,0 +1,122 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 10vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 10vh;
+  padding-top: 5vh;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name,
+.profile-email,
+.profile-phone {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.profile-input {
+  margin-left: 25% ;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  width: 50%;
+}
+
+.profile-file-input {
+    display: none;
+  }
+  
+  .upload-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    
+  }
+
+.profile-submit {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #5DC8BE;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10%;
+  width: 30%;
+  align-self: flex-end;
+}
+
+.image-container {
+  position: sticky;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.profile-file-input {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.Top-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.lower-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.current-profile-box{
+  display: grid;
+  grid-template-areas:
+    'profile-email profile-name'
+    'profile-email profile-name'
+    ;
+  /* flex-direction: column; */
+  width: 60%;
+  padding: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+.blank-container{
+  width: 40%;
+}
+
+.form-text-label{
+  margin-top: 10px;
+  margin-left: 25%;
+}
+
+.row{
+  display: flex;
+}
