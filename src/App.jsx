@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useContext, createContext } from "react";
 import Login from "./LoginAndReg/Login.jsx";
-import Register from "./LoginAndReg/Reg.jsx";
+import Register from "./LoginAndReg/Register.jsx";
 import "./index.css";
 import Landing from "./Page/LandingPage/Landing.jsx";
 import AboutUs from "./Page/AboutUsPage/AboutUs.jsx";
