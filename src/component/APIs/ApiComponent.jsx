@@ -1,6 +1,4 @@
-export const baseUrl = 'http://127.0.0.1:8000';
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+export const baseUrl = 'http://54.66.21.117:8000';
 
 export const getMotorData = async(id) => {
   const motorApi = `${baseUrl}/devices/get/motor_data`;

@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 
 const MotorDetail = () => {
   const [motorData, setMotorData] = useState([]);
+  const [dataTable, setTable] = useState([]);
   const [motorInfo, setMotorInfo] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams(); // Update the parameter name to 'id'
@@ -54,28 +55,17 @@ const MotorDetail = () => {
       console.log(err);
     }
   }
-  // const getData = () => {
-  //   dispatch(getLastData({"motor_id": id})).unwrap()
-  //   .then((data) => {
-  //     console.log(data);
-  //     dispatch(addMotorDataById(data.data))
-  //     console.log(motorData);
-  //   })
-  //   .catch((err) => {
-  //     Swal.fire({
-  //       title: 'Getting Data Failed!',
-  //       text: 'Please try again later.',
-  //       icon: "error",
-  //       confirmButtonText: 'Okay'
-  //     });
-  //   })
-  // }
+
+  useEffect(() => {
+    const reversed = [...motorData].reverse();
+    setTable(reversed);
+  }, [motorData]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       getData();
       console.log("getData is working...");
-    }, 3000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
   
@@ -158,7 +148,7 @@ const MotorDetail = () => {
           </tr>
         </thead>
         <tbody>
-          {motorData ? motorData.map((sensor, index) => (
+          {motorData ? motorData.reverse().map((sensor, index) => (
             <tr key={index}>
               <td>{sensor.temperature}</td>
               <td>{sensor.vibration}</td>
